@@ -22,12 +22,18 @@ export async function fetchPages() {
         equals: "Published",
       },
     },
-    sorts: [
-      {
-        property: "Created time",
-        direction: "ascending",
+  });
+}
+
+export async function fetchIndexPages() {
+  return notion.databases.query({
+    database_id: process.env.NOTION_DATABASE_ID,
+    filter: {
+      property: "Status",
+      status: {
+        equals: "Index",
       },
-    ],
+    },
   });
 }
 
@@ -36,61 +42,140 @@ export async function fetchPageBlocks(pageId) {
   return response.results;
 }
 
-async function updateContent() {
-  const pages = await fetchPages();
-  const pageResults = pages.results.entries();
+function getSlugParts(slug) {
+  return slug.split("/");
+}
 
-  for (const [index, page] of pageResults) {
-    const blocks = await fetchPageBlocks(page.id);
-    const markdownObjects = await n2m.blocksToMarkdown(blocks);
-    const markdownString = n2m.toMarkdownString(markdownObjects); // Convert Markdown objects to string
+async function getFolderPath(page, __dirname, slug) {
+  const slugParts = getSlugParts(slug);
+  const subpathOfTab = slugParts.slice(0, -1);
+  let folderPath;
 
-    // Ensure the page has a 'Slug' property
-    const slug = page.properties["Slug"]["url"];
-    const isSlug = !!slug;
-    if (!isSlug) {
-      console.error(`Page ${page.id} does not have a Slug property`);
-      continue;
-    }
+  if (page.properties["Tab"]) {
+    const tabName = page.properties["Tab"]?.["select"]?.["name"];
+    folderPath = path.join(__dirname, "../pages", tabName, ...subpathOfTab);
+  } else {
+    folderPath = path.join(__dirname, "../pages", ...subpathOfTab);
+  }
+  await fs.promises.mkdir(folderPath, { recursive: true });
 
-    const pageTitle = page.properties["Title"]["title"][0]["plain_text"];
-    const isPageTitle = !!pageTitle;
-    if (!isPageTitle) {
-      console.error(`Page ${page.id} does not have a pageTitle property`);
-      continue;
-    }
+  return [folderPath, slugParts[slugParts.length - 1]];
+}
 
-    const markdownTitle = `# ${pageTitle}\n\n`;
-    const fullMarkdownContent = markdownTitle + markdownString.parent;
-
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-
-    let folderPath;
-    let slugParts;
-    if (page.properties["Tab"]) {
-      const tabName = page.properties["Tab"]["select"]["name"];
-      slugParts = slug.split("/");
-      folderPath = path.join(
-        __dirname,
-        "../pages",
-        tabName,
-        ...slugParts.slice(0, -1)
-      );
-
-      if (!fs.existsSync(folderPath)) {
-        fs.mkdirSync(folderPath, { recursive: true });
-      }
-    } else {
-      slugParts = slug.split("/");
-      folderPath = path.join(__dirname, "../pages", ...slugParts.slice(0, -1));
-    }
-
-    const fileIndex = index + 1;
-    const fileName = `${fileIndex}.-${slugParts[slugParts.length - 1]}.mdx`;
-
-    fs.writeFileSync(path.join(folderPath, fileName), fullMarkdownContent);
+async function writeMetaJsonFile(folderPath, originFileName, plainText) {
+  try {
+    const parsedData = JSON.parse(plainText);
+    const formattedJson = JSON.stringify(parsedData, null, 2);
+    await fs.promises.writeFile(
+      path.join(`${folderPath}/${originFileName}`, "_meta.json"),
+      formattedJson
+    );
+  } catch (error) {
+    console.error(`Failed to write _meta.json file:`, error);
   }
 }
 
-updateContent();
+async function writeMarkdownFile(
+  folderPath,
+  originFileName,
+  pageTitle,
+  markdownString
+) {
+  try {
+    const markdownTitle = `# ${pageTitle}\n\n`;
+    const fullMarkdownContent = markdownTitle + markdownString.parent;
+    const mdxFileName = `${originFileName}.mdx`;
+    await fs.promises.writeFile(
+      path.join(folderPath, mdxFileName),
+      fullMarkdownContent
+    );
+  } catch (error) {
+    console.error(`Failed to write .mdx file:`, error);
+  }
+}
+
+async function updateContent() {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+
+  // Convert Indexes
+  const indexPages = await fetchIndexPages();
+  const indexPageResults = Object.entries(indexPages.results);
+
+  const indexPagePromises = indexPageResults.map(async ([idx, indexPage]) => {
+    const blocks = await fetchPageBlocks(indexPage.id);
+    if (!blocks[0]?.code?.rich_text) {
+      console.error(`Invalid data structure for indexPage ${idx}`);
+      return;
+    }
+
+    console.time(`indexPagePromises-${idx}`);
+
+    try {
+      const plainText = blocks[0].code.rich_text[0].plain_text;
+      const slug = indexPage.properties["Slug"]?.url;
+      if (!slug) {
+        throw new Error(
+          `indexPage ${indexPage.id} does not have a Slug property`
+        );
+      }
+
+      const [folderPath, originFileName] = await getFolderPath(
+        indexPage,
+        __dirname,
+        slug
+      );
+      await writeMetaJsonFile(folderPath, originFileName, plainText);
+      console.timeEnd(`indexPagePromises-${idx}`);
+    } catch (error) {
+      console.error(`Failed to process indexPage ${idx}:`, error);
+    }
+  });
+
+  await Promise.all(indexPagePromises);
+
+  // Convert Pages
+  const pages = await fetchPages();
+  const pageResults = Object.entries(pages.results);
+
+  const pagePromises = pageResults.map(([index, page]) => {
+    return fetchPageBlocks(page.id)
+      .then(blocks => n2m.blocksToMarkdown(blocks))
+      .then(markdownObjects => n2m.toMarkdownString(markdownObjects))
+      .then(async markdownString => {
+        console.time(`pagePromises-${index}`);
+
+        const slug = page.properties["Slug"]?.["url"];
+        const isSlug = !!slug;
+        if (!isSlug) {
+          throw new Error(`Page ${page.id} does not have a Slug property`);
+        }
+
+        const pageTitle =
+          page.properties["Title"]?.["title"]?.[0]?.["plain_text"];
+        const isPageTitle = !!pageTitle;
+        if (!isPageTitle) {
+          throw new Error(`Page ${page.id} does not have a pageTitle property`);
+        }
+
+        const [folderPath, originFileName] = await getFolderPath(
+          page,
+          __dirname,
+          slug
+        );
+
+        await writeMarkdownFile(
+          folderPath,
+          originFileName,
+          pageTitle,
+          markdownString
+        );
+        console.timeEnd(`pagePromises-${index}`);
+      });
+  });
+
+  await Promise.all(pagePromises);
+}
+console.time("updateContent");
+await updateContent();
+console.timeEnd("updateContent");

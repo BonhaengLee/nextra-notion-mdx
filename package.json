@@ -5,14 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "update-content": "node ./scripts/updateContent.mjs",
-    "build": "npm run update-content && next build",
+    "build": "rm -rf .next && npm run update-content && next build",
     "start": "next start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BonhaengLee/nextra-notion-mdx"
   },
-  "author": "Shu Ding <g@shud.in>",
+  "author": "Lee Bon Haeng <coalee22@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/BonhaengLee/nextra-notion-mdx/issues"
