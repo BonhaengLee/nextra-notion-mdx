@@ -1,15 +1,28 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
+  "index": {
     "title": "About",
+    "type": "page"
+  },
+  "FE": {
+    "title": "FE",
+    "type": "page"
+  },
+  "BE": {
+    "title": "BE",
+    "type": "page"
+  },
+  "DevOps": {
+    "title": "DevOps",
     "type": "page"
   },
   "contact": {
     "title": "Contact ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
+    "href": "mailto:coalee22@gmail.com"
+  },
+  "archived": {
+    "title": "Archived",
+    "type": "page",
+    "display": "hidden"
   }
 }

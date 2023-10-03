@@ -1,31 +1,49 @@
 {
-  "name": "nextra-docs-template",
+  "name": "nextra-notion-mdx",
   "version": "0.0.1",
-  "description": "Nextra docs template",
+  "description": "Nextra docs using the Notion api",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "update-content": "node ./scripts/updateContent.mjs",
+    "build": "npm run update-content && next build",
     "start": "next start"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shuding/nextra-docs-template.git"
+    "url": "git+https://github.com/BonhaengLee/nextra-notion-mdx"
   },
   "author": "Shu Ding <g@shud.in>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shuding/nextra-docs-template/issues"
+    "url": "https://github.com/BonhaengLee/nextra-notion-mdx/issues"
   },
-  "homepage": "https://github.com/shuding/nextra-docs-template#readme",
+  "homepage": "https://github.com/BonhaengLee/nextra-notion-mdx#readme",
   "dependencies": {
+    "@notion-render/bookmark-plugin": "^0.0.2",
+    "@notion-render/client": "^0.0.2",
+    "@notion-render/hljs-plugin": "^0.0.2",
+    "@notionhq/client": "^2.2.13",
+    "dotenv": "^16.3.1",
     "next": "^13.0.6",
     "nextra": "latest",
     "nextra-theme-docs": "latest",
+    "notion-to-md": "^3.1.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.68.0"
   },
   "devDependencies": {
     "@types/node": "18.11.10",
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "^13.3.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-security": "^1.5.0",
+    "prettier": "^2.7.1",
     "typescript": "^4.9.3"
   }
 }

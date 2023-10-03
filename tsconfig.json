@@ -15,6 +15,13 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "lib/notion.ts",
+    "scripts/updateContent.mjs",
+    "pages/_app.ndx"
+  ],
   "exclude": ["node_modules"]
 }

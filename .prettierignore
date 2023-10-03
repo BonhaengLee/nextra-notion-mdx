@@ -1,0 +1,5 @@
+coverage/**
+src/animations/**
+.storybook/**
+.next/**
+public
