@@ -35,13 +35,10 @@ tags는 웹 상의 다른 페이지로 이동하게 하는 하이퍼 링크 내�
 > ❗ HTML 요소는 대소문자를 구분하지 않는다. 하지만 가독성 문제로 소문자로 작성한다.
 
 
- 
+## HTML 요소(Element)의 구조
 
 
-## **HTML 요소(Element)의 구조**
-
-
-![https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-small.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/463d002e-35be-4675-91a9-8c7c56d904ae/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231004T050217Z&X-Amz-Expires=3600&X-Amz-Signature=56a5c235d788d0b60ccb8cb36e2733d6485b97c720b124eab1cbed499a5c4ca5&X-Amz-SignedHeaders=host&x-id=GetObject)
+![https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-small.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/463d002e-35be-4675-91a9-8c7c56d904ae/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231004T062845Z&X-Amz-Expires=3600&X-Amz-Signature=58ec3610fc43a07143d6035e563718c5f30685fd34039f8b666a94ef14dff90b&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 - **여는 태그(Opening tag):** 이것은 요소의 “이름”과(이 경우 “p”), “열고 닫는 꺽쇠 괄호”로 구성된다. 
 요소가 시작(이 경우 단락의 시작 부분)부터 효과가 적용되기 시작한다.
@@ -49,7 +46,7 @@ tags는 웹 상의 다른 페이지로 이동하게 하는 하이퍼 링크 내�
 - **내용(Content):** 요소의 내용이며, 이 경우 단순한 텍스트이다.
 - **요소(Element):** 여는 태그, 닫는 태그, 내용을 통틀어 요소(element)라고한다.
 
-## **포함(내포:內包)된 요소(Nesting elements)**
+## 포함(내포:內包)된 요소(Nesting elements)
 
 
 요소 안에 다른 요소가 들어갈 수 있다. 
@@ -74,7 +71,7 @@ tags는 웹 상의 다른 페이지로 이동하게 하는 하이퍼 링크 내�
 잘못 된 내포에도 불구하고 어떤 브라우저에서 이상없이 보일 수도 있다. 하지만 그저 그 브라우저가 문법에 흐물흐물(permittable)해서 웬만한 오류는 자체 수정해서 브라우저 창에 렌더링해주기 때문이다. '웬만한 오류는 알아서 처리해 준다.' 는 부분에서 초보자는 특히 주의해야 한다.
 
 
-## **블럭 레벨 요소 vs 인라인 요소(Block versus inline elements)**
+## 블럭 레벨 요소 vs 인라인 요소(Block versus inline elements)
 
 - **블록 레벨 요소(Block-level elements)** 는 웹페이지 상에 블록(Block)을 만드는 요소이다. 
 블록 레벨 요소는 앞뒤 요소 사이에 새로운 줄(Line)을 만들고 나타납니다. 즉 블록 레벨 요소 이전과 이후 요소사이의 줄을 바꾼다. 
@@ -117,7 +114,7 @@ sixth
 > ❗ **참고:** [Block-level elements](https://developer.mozilla.org/ko/docs/Glossary/Block-level_content) 문서와 [Inline elements](https://developer.mozilla.org/ko/docs/Glossary/Inline-level_content) 문서를 참고하면 블럭과 인라인 요소에 대한 유용한 내용을 찾을 수 있다.
 
 
-## **빈 요소(Empty elements)**
+## 빈 요소(Empty elements)
 
 
 모든 요소가 위에 언급된 여는 태그, 내용, 닫는 태그 패턴을 따르는 것은 아닙니다. 주로 문서에 무언가를 첨부하기 위해 단일 태그(Single tag)를 사용하는 요소도 있습니다. 예를 들어 [`<img>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/img) 요소는 해당 위치에 이미지를 삽입하기 위한 요소입니다:
@@ -129,10 +126,10 @@ sixth
 > ❗ **참고:** 빈 요소는 가끔 Void 요소로 불리기도 한다.
 
 
-## **속성(Attributes)**
+## 속성(Attributes)
 
 
-![https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-attribute-small.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/82bd1136-7ecc-4f27-93b4-5cd659cbc7d7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231004T050217Z&X-Amz-Expires=3600&X-Amz-Signature=7185e72b825aa20d8c20c5034d77ebbafaacd9d32db4189256de21967b69f082&X-Amz-SignedHeaders=host&x-id=GetObject)
+![https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-attribute-small.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/82bd1136-7ecc-4f27-93b4-5cd659cbc7d7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231004T062845Z&X-Amz-Expires=3600&X-Amz-Signature=5d82767c0a9f7bb7387d5c54fafaab74d53c42b515b622c9317661c97fb368f6&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 속성을 사용할 때에는 아래 내용을 지켜야 한다:
@@ -214,7 +211,7 @@ sixth
 ```
 
 
-## **HTML 문서의 구조**
+## HTML 문서의 구조
 
 
 ```html
@@ -239,7 +236,7 @@ sixth
 - `<title></title>`: 페이지가 로드되는 브라우저 탭에 표시되는 제목으로 사용. 북마크 시 페이지 설명에도 사용됨.
 - `<body></body>`: 페이지에 표시되는 모든 콘텐츠가 포함된다.
 
-### **HTML 공백**
+### HTML 공백
 
 
 HTML 요소 내에서 얼마나 많은 공백(하나 이상 또는 줄 바꿈)을 사용하든 HTML 파서는 코드를 렌더링할 때 공백 시퀀스를 단일 공백으로 줄인다. 하지만 가독성을 위해 공백을 적절히 사용해라.
@@ -248,5 +245,46 @@ HTML 요소 내에서 얼마나 많은 공백(하나 이상 또는 줄 바꿈)�
 HTML은 중첩된 각 요소가 내부에 있는 것보다 두 칸 더 들여쓰기되어 있다.
 
 
-## **Entity references: HTML에 특수 문자 포함**
+## Entity references: HTML에 특수 문자 포함
+
+
+HTML 구문에 쓰이는 `<`,`>`, `"`및 `&` 는 텍스트에 어떻게 포함시킬까?
+
+
+[**링크**](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references)를 보자. 엠퍼샌드(&)로 시작하고 세미콜론(;)으로 끝난다.
+
+
+ 
+
+
+```html
+<p>In HTML, you define a paragraph using the <p> element.</p>
+
+<p>In HTML, you define a paragraph using the &lt;p&gt; element.</p>
+```
+
+
+첫번째 단락의 경우 `<p>`의 두 번째 인스턴스를 새 단락이 시작하는 것으로 해석한다.
+
+
+> ❗ **참고:** HTML의 [문자 인코딩이 UTF-8로 설정](https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML#specifying_your_document%27s_character_encoding)되어 있기 때문에 최신 브라우저는 실제 기호를 잘 처리하므로 다른 기호에 대해서는 엔티티 참조를 사용할 필요가 없다.
+
+
+## HTML 주석
+
+
+주석의 목적은 코드에 메모를 포함시켜 논리 또는 코딩을 설명할 수 있도록 하는 것이다. 
+
+
+코드를 완전히 기억 못할 정도가 되었을 때 코드베이스로 돌아오는 경우 매우 유용하다. 
+
+
+HTML 주석을 쓰려면 특수 마커 `<!-` 및 `->`로 주석을 묶는다.
+
+
+```html
+<p>I'm not inside a comment</p>
+
+<!-- <p>I am!</p> -->
+```
 

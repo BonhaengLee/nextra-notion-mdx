@@ -40,7 +40,7 @@ const config: DocsThemeConfig = {
       <span>Web Developer Study Notes</span>
     </>
   ),
-  faviconGlyph: "🍁",
+  faviconGlyph: "🪼",
   project: {
     link: "https://github.com/BonhaengLee/nextra-notion-mdx",
   },
@@ -50,7 +50,7 @@ const config: DocsThemeConfig = {
   },
   useNextSeoProps() {
     return {
-      titleTemplate: "%s – Web Developer lbh",
+      titleTemplate: "%s",
     };
   },
   primaryHue: { dark: 183, light: 27 },

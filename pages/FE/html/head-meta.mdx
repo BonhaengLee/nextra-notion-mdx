@@ -9,13 +9,13 @@ head는 페이지를 열 때 브라우저에 표시되지 않는다. head는 `<t
 | 목적:    | HTML의 head을 사용하는 목적과 HTML 문서에 어떤 영향을 끼칠 수 있는지에 대해 학습합니다.                                                                                              |
 
 
-## **HTML head란?**
+## HTML head란?
 
 
 head의 내용이 하는 일은 페이지에 대한 [metadata](https://developer.mozilla.org/ko/docs/Glossary/Metadata)를 포함하는 것이다.
 
 
-## **제목 달기**
+## 제목 달기
 
 
 `<h1>`은 가끔 title을 가리키기는 하지만 `<title>`과는 엄연히 다르다.
@@ -41,7 +41,7 @@ head의 내용이 하는 일은 페이지에 대한 [metadata](https://developer
 ![bookmark-example.png](https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML/bookmark-example.png)
 
 
-## **메타데이터:** **`<meta>`** **요소**
+## 메타데이터: `<meta>` 요소
 
 
 메타데이터는 데이터를 설명하는 데이터다.
@@ -50,7 +50,7 @@ head의 내용이 하는 일은 페이지에 대한 [metadata](https://developer
 HTML에서 문서에 공식적으로 메타데이터를 적용하는 방법이 `<meta>`다. 
 
 
-### **문서의 character 인코딩을 특정하기**
+### 문서의 character 인코딩을 특정하기
 
 
 ```html
@@ -64,7 +64,7 @@ HTML에서 문서에 공식적으로 메타데이터를 적용하는 방법이 `
 만약 (라틴 알파벳 사용을 위해서) `ISO-8859-1`로 characterset을 설정한다면, 페이지가 엉망으로 렌더링된다.
 
 
-![Untitled.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/cdce2924-4487-43a7-8b03-0b8c48705cc0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231004T050217Z&X-Amz-Expires=3600&X-Amz-Signature=569ed097305cb4989ea26d4d45043b5c474718b1bfa39ac1da98092f52857895&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Untitled.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/cdce2924-4487-43a7-8b03-0b8c48705cc0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231004T062845Z&X-Amz-Expires=3600&X-Amz-Signature=cf7351efc099cd5d78ed6d664cc9b583c16323b873a84d011e2d21055f016b94&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 > **참고:** 크롬과 같은 어떤 브라우저는 자동으로 잘못된 인코딩을 고치기 때문에, 어떤 브라우저를 사용하는가에 따라 이 문제를 겪지 않을 수도 있습니다. 그래도 다른 브라우저에서 있을 잠재적인 문제를 피하기 위하여 인코딩을 `utf-8` 으로 설정해야 합니다.
@@ -73,13 +73,13 @@ HTML에서 문서에 공식적으로 메타데이터를 적용하는 방법이 `
 > ℹ️ 크롬과 같은 브라우저가 아니라 다른 브라우저를 사용하는 경우에 이런 잘못된 character 렌더링을 겪어본 기억이 있다. 
 
 
-### **능동적 학습: character 인코딩 실험**
+### 능동적 학습: character 인코딩 실험
 
 
 ...
 
 
-### **저자와 설명을 추가**
+### 저자와 설명을 추가
 
 - `name` 은 메타 요소가 어떤 정보의 형태를 갖고 있는지 알려준다.
 - `content`는 실제 메타데이터의 컨텐츠.
@@ -105,7 +105,7 @@ HTML에서 문서에 공식적으로 메타데이터를 적용하는 방법이 `
 > ℹ️ 현재 프로젝트에서 작성한 meta 태그 중에 검색엔진에서 무시해버리는데도 사용하고 있는 것들이 있는가?
 
 
-### **Other types of metadata**
+### Other types of metadata
 
 
 특정 사이트에서 사용할 수 있는 특정 정보를 제공하도록 설계된 경우도 있다. 
@@ -135,7 +135,7 @@ and HTML5 Apps. It also documents Mozilla products, like Firefox OS." />
 ```
 
 
-## **맞춤 아이콘 추가하기**
+## 맞춤 아이콘 추가하기
 
 
 커스텀 아이콘 레퍼런스를 메타데이터에 추가하고 특정 컨텐츠에서 이것을 보여지게 할 수 있다.
@@ -184,7 +184,7 @@ and HTML5 Apps. It also documents Mozilla products, like Firefox OS." />
 지금 당장 모든 아이콘을 구현할 부담을 느낄 필요가 없다. 이는 고급 기능이며 여러 지식을 습득해야 한다.
 
 
-## **HTML에 CSS 와 JavaScript 적용하기**
+## HTML에 CSS 와 JavaScript 적용하기
 
 
 현대 모든 웹사이트는 상호작용 기능이 많은 영상 플레이어, 지도, 게임 등을 위해 [JavaScript](https://developer.mozilla.org/ko/docs/Glossary/JavaScript)가 필요하고, 이것들을 더 멋져 보이게 하기 위해 [CSS](https://developer.mozilla.org/ko/docs/Glossary/CSS)가 사용된다. 
@@ -208,7 +208,7 @@ and HTML5 Apps. It also documents Mozilla products, like Firefox OS." />
 ```
 
 
-## **문서의 기본 언어 설정**
+## 문서의 기본 언어 설정
 
 
 ```html

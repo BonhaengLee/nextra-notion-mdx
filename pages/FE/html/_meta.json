@@ -5,11 +5,11 @@
   "start-to-html": {
     "title": "HTML 시작하기"
   },
-  "html-text-fundamentals": {
-    "title": "HTML text fundamentals"
-  },
   "head-meta": {
     "title": "head 태그에는 무엇이 있을까? HTML의 메타데이터"
+  },
+  "html-text-fundamentals": {
+    "title": "HTML text fundamentals"
   },
   "hyperlink": {
     "title": "하이퍼링크 만들기"
