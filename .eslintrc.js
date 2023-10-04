@@ -27,12 +27,10 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "airbnb",
     "prettier",
-    "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
     "plugin:sonarjs/recommended",
     "plugin:security/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:storybook/recommended",
+    "plugin:@next/next/recommended",
   ],
   ignorePatterns: ["node_modules/", ".next/", "out/", "public/"],
   rules: {
