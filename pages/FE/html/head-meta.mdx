@@ -1,12 +1,14 @@
 # head 태그에는 무엇이 있을까? HTML의 메타데이터
 
 
+[Attributions and copyright licensing](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Attrib_copyright_license) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/Community/Roles_teams#contributor) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+
 head는 페이지를 열 때 브라우저에 표시되지 않는다. head는 `<title>`이나, css의 링크, favicon, 다른 메타 데이터(작성자, 중요 키워드 등 HTML에 대한 내용)를 포함합니다. 
 
 
-| 사전 지식: | HTML의 기본 구조, [Getting started with HTML](https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started) 문서의 내용을 사전에 읽으면 좋습니다. |
-| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 목적:    | HTML의 head을 사용하는 목적과 HTML 문서에 어떤 영향을 끼칠 수 있는지에 대해 학습합니다.                                                                                              |
+| 목적: | HTML의 head을 사용하는 목적과 HTML 문서에 어떤 영향을 끼칠 수 있는지에 대해 학습합니다. |
+| --- | -------------------------------------------------------- |
 
 
 ## HTML head란?
@@ -64,7 +66,10 @@ HTML에서 문서에 공식적으로 메타데이터를 적용하는 방법이 `
 만약 (라틴 알파벳 사용을 위해서) `ISO-8859-1`로 characterset을 설정한다면, 페이지가 엉망으로 렌더링된다.
 
 
-![Untitled.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/cdce2924-4487-43a7-8b03-0b8c48705cc0/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231004T062845Z&X-Amz-Expires=3600&X-Amz-Signature=cf7351efc099cd5d78ed6d664cc9b583c16323b873a84d011e2d21055f016b94&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Safari 예시 - 똑똑하다.](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/e88b1a32-ff7f-4527-b19c-9d9409cd52f1/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231007%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231007T062006Z&X-Amz-Expires=3600&X-Amz-Signature=a032f0cd0161b85db8625bada74bc41edb5588fffffea8dd70aee9d512dfccfb&X-Amz-SignedHeaders=host&x-id=GetObject)
+
+
+![Chrome 예시 - 똑똑하다.](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/aef66421-b979-4299-a80f-d601827a2a88/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231007%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231007T062006Z&X-Amz-Expires=3600&X-Amz-Signature=dd7c3f18ea54f7f9c7eb4059800a33f899a46b1d29aadd8afd225212f209116d&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 > **참고:** 크롬과 같은 어떤 브라우저는 자동으로 잘못된 인코딩을 고치기 때문에, 어떤 브라우저를 사용하는가에 따라 이 문제를 겪지 않을 수도 있습니다. 그래도 다른 브라우저에서 있을 잠재적인 문제를 피하기 위하여 인코딩을 `utf-8` 으로 설정해야 합니다.

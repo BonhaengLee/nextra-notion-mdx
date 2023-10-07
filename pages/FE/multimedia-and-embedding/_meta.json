@@ -1,0 +1,20 @@
+{
+  "introduction-to-multimedia-and-embedding": {
+    "title": "멀티미디어와 임베딩 소개"
+  },
+  "image-in-html": {
+    "title": "HTML의 이미지"
+  },
+  "video-and-audio-content": {
+    "title": "비디오와 오디오 콘텐츠"
+  },
+  "from-object-to-iframe-other-embedding-technologies": {
+    "title": "<object> 로부터 <iframe>까지 — 기타 임베딩 기술"
+  },
+  "adding-vector-graphics-to-the-web": {
+    "title": "웹에 벡터 그래픽 추가하기"
+  },
+  "responsive-images": {
+    "title": "반응형 이미지"
+  }
+}

@@ -1,0 +1,45 @@
+# HTML 테이블 기초
+
+[Attributions and copyright licensing](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Attrib_copyright_license) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/Community/Roles_teams#contributor) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+## 테이블이란?
+
+행과 열로 구성된 구조화된 데이터 집합입니다.
+
+### 테이블은 어떻게 작동하나요?
+
+행과 열 헤더를 시각적으로 연결해 정보를 쉽게 해석합니다. 올바르게 구현되면 접근성 도구에서 잘 처리되어 모든 유저의 경험을 향상시킵니다.
+
+### 테이블 스타일링
+
+CSS를 적용해 더 가독성 있게 만들 수 있습니다.
+
+### 언제 사용하면 안될까요?
+
+웹 페이지를 레이아웃하는 용도가 아닙니다. 웹 브라우저의 지원이 부족할 때 사용되었습니다.
+
+아래와 같은 단점이 있습니다.
+
+- **레이아웃 테이블은 시각 장애가 있는 사용자의 접근성을 떨어뜨립니다:** 시각 장애인이 사용하는 [스크린 리더 ](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility)[(en-US)](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Accessibility)는 HTML 페이지에 존재하는 태그를 해석하여 사용자에게 내용을 읽어줍니다. 테이블은 레이아웃에 적합한 도구가 아니며 마크업이 CSS 레이아웃 기술보다 더 복잡하기 때문에 스크린 리더의 출력은 사용자에게 혼란을 줄 수 있습니다.
+- **테이블에서 태그 수프 생성**: 위에서 언급했듯이 테이블 레이아웃은 일반적으로 적절한 레이아웃 기술보다 더 복잡한 마크업 구조를 포함합니다. 이로 인해 코드 작성, 유지 관리 및 디버깅이 더 어려워질 수 있습니다.
+- **테이블이 자동으로 반응하지 않습니다**: 적절한 레이아웃 컨테이너(예: [`<header>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/header), [`<section>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/section), [`<article>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/article) 또는 [`<div>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div)[ ](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div)[(en-US)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div))를 사용하는 경우 너비는 기본적으로 상위 요소의 100%가 됩니다. 반면에 테이블은 기본적으로 콘텐츠에 따라 크기가 조정되므로 다양한 기기에서 효과적으로 작동하는 테이블 레이아웃 스타일을 얻으려면 추가 조치가 필요합니다.
+
+## `<th>` 요소로 헤더 추가하기
+
+### 헤더가 유용한 이유는 무엇인가요?
+
+헤더가 눈에 띄고 디자인이 보기 좋으면 원하는 데이터를 더 쉽게 찾을 수 있습니다.
+
+## 셀이 여러 행과 열에 걸쳐 있도록 허용하기
+
+일부 셀을 두 열에 걸쳐 표시하고 싶은 경우 colspan을 사용할 수 있습니다. 두 행에 걸쳐 표시하고 싶으면 rowspan이 있습니다.
+
+## 열에 공통 스타일 제공
+
+### <col> 없이 스타일링하기
+
+<col>, <colgroup>
+
+열에 스타일링하는 것이 번거로워서 제공되는 기능입니다.
+
+> ✂️ **참고:** 이와 같은 열 스타일링은 [`border`](https://developer.mozilla.org/ko/docs/Web/CSS/border), [`background`](https://developer.mozilla.org/ko/docs/Web/CSS/background), [`width`](https://developer.mozilla.org/ko/docs/Web/CSS/width) 및 [`visibility`](https://developer.mozilla.org/ko/docs/Web/CSS/visibility)와 같은 [몇 가지 속성으로 제한됩니다](https://www.w3.org/TR/CSS22/tables.html#columns). 다른 속성을 설정하려면 열의 모든 `<td>` 또는 `<th>`에 스타일을 지정하거나 [`:nth-child`](https://developer.mozilla.org/ko/docs/Web/CSS/:nth-child)와 같은 복잡한 선택기를 사용해야 합니다.

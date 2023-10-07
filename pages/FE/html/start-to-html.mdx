@@ -1,12 +1,14 @@
 # HTML 시작하기
 
 
+[Attributions and copyright licensing](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Attrib_copyright_license) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/Community/Roles_teams#contributor) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+
 요소와 속성을 정의하고 중요한 용어들을 살펴본다. HTML 요소를 구조화하는 방법, 언어의 중요한 기본 특징을 설명한다. 
 
 
-| 사전 지식 | 기본적인 컴퓨터의 이해, [기본 소프트웨어 설치하기](https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/Installing_basic_software), [파일 다루기](https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/Dealing_with_files)의 기본적 지식. |
-| ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 목표    | HTML언어에 대해 익숙해지고, HTML을 이용하여 실습해봅니다.                                                                                                                                                                                                          |
+| 목표 | HTML언어에 대해 익숙해지고, HTML을 이용하여 실습해봅니다. |
+| -- | ------------------------------------ |
 
 
 ## HTML이란?
@@ -38,7 +40,17 @@ tags는 웹 상의 다른 페이지로 이동하게 하는 하이퍼 링크 내�
 ## HTML 요소(Element)의 구조
 
 
-![https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-small.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/463d002e-35be-4675-91a9-8c7c56d904ae/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231004T062845Z&X-Amz-Expires=3600&X-Amz-Signature=58ec3610fc43a07143d6035e563718c5f30685fd34039f8b666a94ef14dff90b&X-Amz-SignedHeaders=host&x-id=GetObject)
+![https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-small.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/463d002e-35be-4675-91a9-8c7c56d904ae/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231007%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231007T062006Z&X-Amz-Expires=3600&X-Amz-Signature=aeedd9045fc8e8cedb80f1d5652cc9bd69e596d83baae626a713863e11a36568&X-Amz-SignedHeaders=host&x-id=GetObject)
+
+
+```javascript
+<p>My Dog is very grumpy</p>
+   |______**Content**______|
+|_________**Element**__________|
+|                          |
+|                          |
+**Opening tag**                **Closing tag**   
+```
 
 - **여는 태그(Opening tag):** 이것은 요소의 “이름”과(이 경우 “p”), “열고 닫는 꺽쇠 괄호”로 구성된다. 
 요소가 시작(이 경우 단락의 시작 부분)부터 효과가 적용되기 시작한다.
@@ -129,7 +141,10 @@ sixth
 ## 속성(Attributes)
 
 
-![https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-attribute-small.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/82bd1136-7ecc-4f27-93b4-5cd659cbc7d7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231004T062845Z&X-Amz-Expires=3600&X-Amz-Signature=5d82767c0a9f7bb7387d5c54fafaab74d53c42b515b622c9317661c97fb368f6&X-Amz-SignedHeaders=host&x-id=GetObject)
+```javascript
+<p class="editor">My Dog is very grumpy</p>
+   |_**Attribute**_|
+```
 
 
 속성을 사용할 때에는 아래 내용을 지켜야 한다:

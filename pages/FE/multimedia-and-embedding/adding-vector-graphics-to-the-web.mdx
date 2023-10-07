@@ -1,0 +1,80 @@
+# 웹에 벡터 그래픽 추가하기
+
+[Attributions and copyright licensing](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Attrib_copyright_license) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/Community/Roles_teams#contributor) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+벡터 그래픽은 파일 크기가 작고 확장성이 뛰어나 확대하거나 큰 크기로 확대해도 픽셀이 깨지지 않습니다.
+
+| 목표: | 웹 페이지에 SVG(벡터) 이미지를 삽입하는 방법을 알아보세요. |
+| ----- | ---------------------------------------------------------- |
+
+## 벡터 그래픽이란 무엇인가요?
+
+- **래스터 이미지**는 픽셀 그리드를 사용하여 정의되며, 래스터 이미지 파일에는 각 픽셀이 배치될 위치와 정확한 색상을 나타내는 정보가 포함되어 있습니다.
+  널리 사용되는 웹 래스터 형식에는 비트맵(`.bmp`), PNG(`.png`), JPEG(`.jpg`), GIF(`.gif`) 등이 있습니다.
+- **벡터 이미지**는 알고리즘을 사용하여 정의되며, 벡터 이미지 파일에는 컴퓨터가 화면에 렌더링할 때 이미지가 어떻게 보일지 계산하는 데 사용할 수 있는 모양 및 경로 정의가 포함되어 있습니다. 
+  [SVG](https://developer.mozilla.org/ko/docs/Glossary/SVG) 형식을 사용하면 웹에서 사용할 수 있는 강력한 벡터 그래픽을 만들 수 있습니다.
+
+페이지를 확대해도 벡터 이미지는 크기와 관계 없이 알고리즘을 사용하여 이미지의 모양을 계산하고 조정해서 선명합니다.
+
+## SVG란 무엇인가요?
+
+벡터 이미지를 설명하기 위한 XML 기반 언어입니다. `<circle>`, `<rect>`, `<feColorMatrix>`, `<animate>`, `<mask>` 등이 있습니다.
+
+SVG 이미지를 만들 때 대부분의 사람들은 [Inkscape](https://inkscape.org/)나 [Illustrator](https://en.wikipedia.org/wiki/Adobe_Illustrator)와 같은 벡터 그래픽 편집기를 사용합니다. 이러한 패키지를 사용하면 다양한 그래픽 도구를 사용하여 다양한 일러스트레이션을 만들고 사진의 근사치를 만들 수 있습니다. 예를 들어, Inkscape의 트레이스 비트맵 기능이 있습니다.
+
+SVG는 아래의 이점을 가집니다.
+
+- 벡터 이미지의 텍스트는 계속 액세스할 수 있습니다([SEO](https://developer.mozilla.org/ko/docs/Glossary/SEO)에도 도움이 됩니다).
+- SVG는 이미지의 각 구성 요소가 CSS를 통해 스타일을 지정하거나 JavaScript를 통해 스크립트를 작성할 수 있는 요소이기 때문에 스타일링/스크립팅에 적합합니다.
+
+아래의 단점을 가집니다.
+
+- SVG는 매우 빠르게 복잡해져 파일 크기가 커질 수 있으며, 복잡한 SVG는 브라우저에서 처리하는 데 상당한 시간이 걸릴 수 있습니다.
+- SVG는 만들려는 이미지의 종류에 따라 래스터 이미지보다 만들기가 더 어려울 수 있습니다.
+
+## 페이지에 SVG 추가하기
+
+### 빠른 방법 : `img` 요소
+
+src에 지정합니다.
+
+이 방법에는 아래의 이점이 있습니다.
+
+- `alt` 속성에 텍스트에 해당하는 기본 제공 이미지 구문을 빠르고 친숙하게 사용할 수 있습니다.
+- [`<a>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/a) 요소 안에 `<img>`를 중첩하여 이미지를 하이퍼링크로 쉽게 만들 수 있습니다.
+- SVG 파일은 브라우저에서 캐시할 수 있으므로 나중에 로드된 이미지를 사용하는 모든 페이지의 로딩 시간이 빨라집니다.
+
+아래의 단점이 있습니다.
+
+- Javascript로 이미지를 조작할 수 없습니다.
+- CSS로 SVG 콘텐츠를 제어하려면 SVG 코드에 인라인 CSS 스타일을 포함해야 합니다. SVG 파일에서 호출된 외부 스타일시트는 적용되지 않습니다.
+- CSS 의사 클래스(예: `:focus`)를 사용하여 이미지 스타일을 다시 지정할 수 없습니다.
+
+### 문제 해결 및 브라우저 간 지원
+
+SVG를 지원하지 않는 브라우저(IE 8 이하, Android 2.3 이하)의 경우, `src` 속성에서 PNG 또는 JPG를 참조하고 [`srcset`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/img#srcset) 속성(최신 브라우저만 인식)을 사용하여 SVG를 참조할 수 있습니다. 이 경우 지원 브라우저에서만 SVG를 로드하며, 이전 브라우저에서는 대신 PNG를 로드합니다.
+
+SVG를 CSS 배경 이미지로 사용할 수도 있습니다. 아래 코드에서 구형 브라우저는 인식하는 PNG를 그대로 사용하지만 최신 브라우저는 SVG를 로드합니다:
+
+### HTML에 SVG 코드를 포함하는 방법
+
+<svg>를 인라인으로 넣는 방법은 아래의 장점이 있습니다.
+
+- SVG를 인라인에 넣으면 HTTP 요청이 절약되므로 로딩 시간을 조금 줄일 수 있습니다.
+- SVG 요소에 `클래스` 및 `ID`를 할당하고 SVG 내 또는 HTML 문서에 대한 CSS 스타일 규칙을 넣는 모든 위치에서 CSS로 스타일을 지정할 수 있습니다. 실제로 모든 [SVG 프레젠테이션 속성 ](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute)[(en-US)](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute)을 CSS 속성으로 사용할 수 있습니다.
+- SVG 인라인은 일반 스타일시트에서도 SVG 이미지에 CSS 상호 작용(예: `:focus`) 및 CSS 애니메이션을 사용할 수 있는 유일한 접근 방식입니다.
+- SVG 마크업을 [`<a>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/a) 요소로 감싸서 하이퍼링크로 만들 수 있습니다.
+
+아래의 단점이 있습니다.
+
+- 이 방법은 SVG를 한 곳에서만 사용하는 경우에만 적합합니다. 복제로 인해 리소스 집약적인 유지 관리가 필요합니다.
+- 추가 SVG 코드는 HTML 파일의 크기를 증가시킵니다.
+- 브라우저는 일반 이미지 자산을 캐시하는 것처럼 인라인 SVG를 캐시할 수 없으므로 이미지가 포함된 첫 페이지가 로드된 후에는 이미지가 포함된 페이지가 더 빨리 로드되지 않습니다.
+- [`<foreignObject>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject)[ ](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject)[(en-US)](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject) 요소에 폴백을 포함할 수 있지만 SVG를 지원하는 브라우저는 여전히 폴백 이미지를 다운로드합니다. 구형 브라우저를 지원하기 위해 추가 오버헤드를 감수할 가치가 있는지를 잘 따져봐야 합니다.
+
+### `iframe` 을 사용해 SVG를 삽입하는 방법
+
+아래의 단점이 있습니다.
+
+- 보시다시피 `iframe`에는 대체 메커니즘이 있지만 브라우저는 `iframe`을 전혀 지원하지 않는 경우에만 대체를 표시합니다.
+- 또한 SVG와 현재 웹페이지의 [origin](https://developer.mozilla.org/ko/docs/Glossary/Origin)가 같지 않으면 기본 웹페이지에서 JavaScript를 사용하여 SVG를 조작할 수 없습니다.

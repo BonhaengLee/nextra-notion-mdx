@@ -1,0 +1,28 @@
+# HTML 디버깅
+
+
+[Attributions and copyright licensing](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Attrib_copyright_license) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/Community/Roles_teams#contributor) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+
+### [허용 코드](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Debugging_HTML#permissive_code)
+
+
+그렇다면 허용한다는 것은 무엇을 의미하는가? 일반적으로 코드에서 뭔가 잘못된 작업을 수행할 때 직면하게 되는 두 가지 주요 오류 유형이 있습니다.
+
+- **구문 오류**
+
+	: 위에 표시된 Rust 오류와 같이 실제로 프로그램이 실행되지 않게 만드는 코드의 철자 또는 구두점 오류입니다. 이러한 문제는 일반적으로 언어 구문에 익숙하고 오류 메시지의 의미를 알고 있으면 쉽게 수정할 수 있습니다.
+
+- **논리 오류**
+
+	: 구문은 실제로는 정확하지만 코드가 의도한 것과 다르므로 프로그램이 잘못 실행되는 오류입니다. 오류의 원인을 알려주는 오류 메시지가 없기 때문에 구문 오류보다 수정하기가 더 어려운 경우가 많습니다.
+
+
+### [HTML 유효성 검사](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Debugging_HTML#html_validation)
+
+
+따라서 위의 예에서 HTML이 올바른 형식인지 확인하고 싶다는 것을 알 수 있습니다! 하지만 어떻게? 위에서 본 것과 같은 작은 예에서는 행을 검색하고 오류를 찾는 것이 쉽지만 거대하고 복잡한 HTML 문서는 어떻습니까?
+
+
+가장 좋은 전략은 HTML, CSS 및 기타 웹 기술을 정의하는 사양을 관리하는 조직인 W3C에서 만들고 유지 관리하는 [마크업 유효성 검사 서비스를 통해 HTML 페이지를 실행하는 것부터 시작하는 것입니다. ](https://validator.w3.org/)이 웹페이지는 HTML 문서를 입력으로 받아 이를 검토하고 HTML에 어떤 문제가 있는지 알려주는 보고서를 제공합니다.
+

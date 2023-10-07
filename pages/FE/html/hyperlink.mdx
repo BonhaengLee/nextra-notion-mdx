@@ -1,12 +1,14 @@
 # 하이퍼링크 만들기
 
 
+[Attributions and copyright licensing](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Attrib_copyright_license) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/Community/Roles_teams#contributor) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+
 웹을 웹답게 만든다는 점에서 하이퍼 링크는 중요하다.
 
 
-| 사전 지식 | [HTML 시작하기](https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started)에서 설명하는 기본적인 HTML 숙련도. [HTML text fundamentals](https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals)에서 설명하는 HTML 텍스트 포맷팅에 대한 지식. |
-| ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 목표    | 하이퍼링크를 효과적으로 다루는 방법과 수많은 파일들을 함께 연결하는 방법을 배웁니다.                                                                                                                                                                                                                             |
+| 목표 | 하이퍼링크를 효과적으로 다루는 방법과 수많은 파일들을 함께 연결하는 방법을 배웁니다. |
+| -- | ----------------------------------------------- |
 
 
 ## 하이퍼링크란
@@ -28,75 +30,51 @@
 > ℹ️ **왜 block level links를 허용할까?**  
 >   
 > HTML5에서도 여전히 일반적으로 인라인 요소 내에 블록 레벨 요소를 넣는 것은 문법 오류로 간주됩니다.   
-> 인라인 요소는 보통 작은 청크의 콘텐츠를 감싸거나 스타일링을 적용하기 위해 사용되며, 블록 레벨 요소는 구조를 생성하고 레이아웃을 정의하는 데 사용됩니다.  
->   
-> ### 인라인 요소 (Inline Elements):  
->   
-> - **`<span>`**, **`<a>`**, **`<strong>`**, **`<em>`**, **`<abbr>`**, 등  
->   
-> - 인라인 요소는 텍스트의 일부를 감싸며, 텍스트 흐름과 인라인 형식 컨텍스트에서만 사용됩니다.  
->   
-> ### 블록 레벨 요소 (Block-level Elements):  
->   
-> - **`<div>`**, **`<p>`**, **`<h1>`** ~ **`<h6>`**, **`<ol>`**, **`<ul>`**, **`<table>`**, 등  
->   
-> - 블록 레벨 요소는 콘텐츠의 구조를 생성하며, 새로운 박스를 생성하여 다른 요소와 분리됩니다.  
->   
-> ### 예외: `<a>` 요소  
->   
-> HTML5에서 **`<a>`** 요소는 예외적으로 블록 레벨 요소를 포함할 수 있게 되었습니다. 이 변경은 위에서 언급한 사용성(큰 클릭 가능 영역을 제공), 접근성, 디자인 유연성(큰 이미지, 텍스트 블록 또는 다른 요소를 링크로 사용할 수 있어 더 동적이고 풍부한 인터페이스) 등의 이유로 인해 이루어졌습니다. 그러나 다른 인라인 요소들에 대해서는 여전히 블록 레벨 요소를 내부에 넣는 것이 허용되지 않습니다.  
->   
-> ### 예제:  
->   
-> - **허용되는 경우:**  
->   
-> - **허용되지 않는 경우:**  
->   
-> 따라서 일반적인 규칙을 따르되, <u>**`<a>`**</u> <u>태그와 같은 특별한 경우에 대한 예외를 인식하는 것이 중요합니다.</u>
+> 인라인 요소는 보통 작은 청크의 콘텐츠를 감싸거나 스타일링을 적용하기 위해 사용되며, 블록 레벨 요소는 구조를 생성하고 레이아웃을 정의하는 데 사용됩니다.
 
 
 	HTML5에서도 여전히 일반적으로 인라인 요소 내에 블록 레벨 요소를 넣는 것은 문법 오류로 간주됩니다. 
 	인라인 요소는 보통 작은 청크의 콘텐츠를 감싸거나 스타일링을 적용하기 위해 사용되며, 블록 레벨 요소는 구조를 생성하고 레이아웃을 정의하는 데 사용됩니다.
 
 
-	### 인라인 요소 (Inline Elements):
+### 인라인 요소 (Inline Elements):
 
-	- **`<span>`**, **`<a>`**, **`<strong>`**, **`<em>`**, **`<abbr>`**, 등
-	- 인라인 요소는 텍스트의 일부를 감싸며, 텍스트 흐름과 인라인 형식 컨텍스트에서만 사용됩니다.
+- **`<span>`**, **`<a>`**, **`<strong>`**, **`<em>`**, **`<abbr>`**, 등
+- 인라인 요소는 텍스트의 일부를 감싸며, 텍스트 흐름과 인라인 형식 컨텍스트에서만 사용됩니다.
 
-	### 블록 레벨 요소 (Block-level Elements):
+### 블록 레벨 요소 (Block-level Elements):
 
-	- **`<div>`**, **`<p>`**, **`<h1>`** ~ **`<h6>`**, **`<ol>`**, **`<ul>`**, **`<table>`**, 등
-	- 블록 레벨 요소는 콘텐츠의 구조를 생성하며, 새로운 박스를 생성하여 다른 요소와 분리됩니다.
+- **`<div>`**, **`<p>`**, **`<h1>`** ~ **`<h6>`**, **`<ol>`**, **`<ul>`**, **`<table>`**, 등
+- 블록 레벨 요소는 콘텐츠의 구조를 생성하며, 새로운 박스를 생성하여 다른 요소와 분리됩니다.
 
-	### 예외: `<a>` 요소
-
-
-	HTML5에서 **`<a>`** 요소는 예외적으로 블록 레벨 요소를 포함할 수 있게 되었습니다. 이 변경은 위에서 언급한 사용성(큰 클릭 가능 영역을 제공), 접근성, 디자인 유연성(큰 이미지, 텍스트 블록 또는 다른 요소를 링크로 사용할 수 있어 더 동적이고 풍부한 인터페이스) 등의 이유로 인해 이루어졌습니다. 그러나 다른 인라인 요소들에 대해서는 여전히 블록 레벨 요소를 내부에 넣는 것이 허용되지 않습니다.
+### 예외: `<a>` 요소
 
 
-	### 예제:
-
-	- **허용되는 경우:**
-
-		```html
-		<a href="https://example.com">
-		  <div>
-		    <p>Click here</p>
-		  </div>
-		</a>
-		```
-
-	- **허용되지 않는 경우:**
-
-		```html
-		<span>
-		  <div>This is incorrect</div>
-		</span>
-		```
+HTML5에서 **`<a>`** 요소는 예외적으로 블록 레벨 요소를 포함할 수 있게 되었습니다. 이 변경은 위에서 언급한 사용성(큰 클릭 가능 영역을 제공), 접근성, 디자인 유연성(큰 이미지, 텍스트 블록 또는 다른 요소를 링크로 사용할 수 있어 더 동적이고 풍부한 인터페이스) 등의 이유로 인해 이루어졌습니다. 그러나 다른 인라인 요소들에 대해서는 여전히 블록 레벨 요소를 내부에 넣는 것이 허용되지 않습니다.
 
 
-	따라서 일반적인 규칙을 따르되, <u>**`<a>`**</u> <u>태그와 같은 특별한 경우에 대한 예외를 인식하는 것이 중요합니다.</u>
+### 예제:
+
+- **허용되는 경우:**
+
+	```html
+	<a href="https://example.com">
+	  <div>
+	    <p>Click here</p>
+	  </div>
+	</a>
+	```
+
+- **허용되지 않는 경우:**
+
+	```html
+	<span>
+	  <div>This is incorrect</div>
+	</span>
+	```
+
+
+따라서 일반적인 규칙을 따르되, <u>**`<a>`**</u> <u>태그와 같은 특별한 경우에 대한 예외를 인식하는 것이 중요합니다.</u>
 
 
 ### Block level 링크들
@@ -135,7 +113,7 @@ URL, 혹은 Uniform Resource Locator은 단순히 무언가가 **웹상의 어�
 URL은 파일들을 찾기위해 path를 이용합니다. **path는 당신이 관심있어 하는 파일이 파일 시스템 어디에 있는지 구체적으로 명시**하구요. 디렉토리 구조에 대한 예제를 보시죠. ([하이퍼링크 만들기](https://github.com/mdn/learning-area/tree/master/html/introduction-to-html/creating-hyperlinks)를 보세요.)
 
 
-![Untitled.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/52402685-5ce7-4ac0-8aa3-a95c65032c46/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231004T062845Z&X-Amz-Expires=3600&X-Amz-Signature=6358647b59304d07a36cf1a6242420b3a48bf955b02fe8bcf5a882d060a84e37&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Untitled.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/5ca8fb57-9d99-4fa0-8ec1-f5a5ec4307d3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231007%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231007T062006Z&X-Amz-Expires=3600&X-Amz-Signature=e1bf589cdb30cd63734fcab66bfb254171c02864c44731bedd79d15760f0f213&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 이 디렉토리 구조의 **root**를 `creating-hyperlinks`라고 부릅니다. 웹사이트를 로컬 단에서 다룰 때에는 전체 웹사이트가 모두 들어갈 수 있는 하나의 디렉토리를 가져야 할 것입니다. Root 안에서 우리는 `index.html` 파일과 `contacts.html` 파일을 갖습니다. 실제 웹사이트에서 `index.html` 는 우리의 **홈페이지 또는 랜딩 페이지**(웹사이트의 접속 포인트 또는 웹사이트의 특정 부분이 되는 페이지)가 될 것이다.
@@ -208,4 +186,42 @@ HTML 문서 내부의 특정 부분(Document fragments, 문서 조각)에 연결
 
 
 상대 URL은 파일의 실제 위치가 어디냐에 따라 다른 장소를 가리킬 것입니다. 예를 들어 여러분이 `index.html` 파일을 `projects` 디렉토리에서 웹사이트의 root로 옮긴다면 (어느 디렉토리에도 포함되지 않는 최상위 디렉토리), `pdfs/project-brief.pdf` 의 상대 URL은 `http://www.example.com/pdfs/project-brief.pdf`를 가리킬 것입니다. `http://www.example.com/projects/pdfs/project-brief.pdf`를 가리키지 않습니다.
+
+
+### 링크명을 명확하게
+
+- 스크린 리더 사용자들은 페이지의 링크에서 링크로 이동하거나 문맥을 벗어난 링크를 읽는 것을 좋아합니다.
+- 검색 엔진은 링크 텍스트를 사용하여 대상 파일을 인덱싱하므로 링크 텍스트에 키워드를 포함하여 링크되는 내용을 효과적으로 설명하는 것이 좋습니다.
+- 시각적 독자들은 모든 단어를 읽는 것보다 페이지를 훑어보고, 링크와 같이 눈에 띄는 페이지 특징에 끌릴 것입니다. 그들은 설명적인 링크 텍스트가 유용하다고 생각할 것입니다.
+- URL을 링크 텍스트의 일부로 반복하지 마십시오. URL이 보기 흉하며, 화면을 보는 사람들이 글자로 URL을 볼 때 이상하게 보입니다.
+- 링크 텍스트에 "link"나 "links to"라고 쓰지마세요. 잡음이 될 뿐입니다. 화면 판독기는 사용자에게 링크가 있다고 말합니다. 링크는 일반적으로 다른 색상으로 스타일링되고 밑줄이 그어져 있기 때문에 시각적으로 브라우저를 보는 사용자들도 링크가 있다는 것을 알 것입니다. (사용자들이 익숙하기 때문에 일반적으로 이 규칙을 어기면 안 됩니다.)
+- 링크 텍스트를 가능한 짧게 유지하십시오. 화면 판독기는 전체 링크 텍스트를 해석해야 하므로 유용합니다.
+- 동일한 텍스트의 여러 복사본이 서로 다른 장소에 연결되는 경우를 최소화합니다. "여기 클릭", "여기 클릭", "여기 클릭"이라는 라벨이 붙어 있는 링크 목록이 있는 경우, 화면 판독기 사용자에게 문제가 발생할 수 있습니다.
+
+### 비 HTML 리소스 연결 시 명확한 표식 남기기
+
+
+• 저대역폭 연결 중인 경우 링크를 클릭하면 예기치 않게 여러 메가바이트 다운로드가 시작됩니다.
+
+
+### 다운로드 연결 시 download 속성 사용
+
+
+## 이메일 링크
+
+
+```javascript
+<a href="mailto:nowhere@mozilla.org">아무데나 전자 메일 보내기</a>
+```
+
+
+### 세부사항 지정하기
+
+
+```javascript
+<a
+  href="mailto:nowhere@mozilla.org?cc=name2@rapidtables.com&bcc=name3@rapidtables.com&subject=The%20subject%20of%20the%20email&body=The%20body%20of%20the%20email">
+  Send mail with cc, bcc, subject and body
+</a>
+```
 

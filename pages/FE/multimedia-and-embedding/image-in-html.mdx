@@ -1,0 +1,175 @@
+# HTML의 이미지
+
+
+[Attributions and copyright licensing](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Attrib_copyright_license) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/Community/Roles_teams#contributor) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+
+| **목표** | 간단한 이미지를 HTML에 삽입하고, 캡션을 사용하여 주석을 추가하는 방법과 HTML 이미지가 CSS 배경 이미지와 관련되는 방법을 배웁니다. |
+| ------ | ------------------------------------------------------------------------------- |
+
+
+## 웹 페이지에 어떻게 이미지를 넣을까?
+
+
+`<img>`를 사용합니다. content와 closing tag가 없는 void element입니다. src, alt 속성이 필요합니다.
+
+
+```javascript
+<img src="images/dinosaur.jpg" alt="Dinosaur" />
+```
+
+
+> 💡 검색 엔진은 이미지 파일을 읽고 SEO에 포함합니다. 따라서 그 내용을 설명하는 파일명을 사용해야 합니다.
+
+
+```javascript
+<img src="https://www.example.com/images/dinosaur.jpg" alt="Dinosaur" />
+```
+
+
+위와 같이 절대 경로를 사용하는 것은 추천하지 않습니다. HTML과 이미지를 동일한 서버에 보관하는 것을 뜻하고 도메인을 이전할 때 모든 URL을 업데이트할 필요가 있기 때문입니다. 
+
+
+이미지를 직접 만들지 않았다면 이미지가 게시된 라이선스 조건에 따라 사용할 권한이 있는지 확인해야 합니다.([자세한 내용](https://developer.mozilla.org/ko/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML#media_assets_and_licensing))
+
+
+> ⚠️ <u>다른 웹사이트에서 호스팅하는 이미지를 src 속성으로 가리키지 마세요.(핫링크)</u> 내 페이지에 방문할 때 이미지를 전송하는 대역폭 비용을 다른 사람이 지불하는 비윤리적 행위입니다. 또는 이미지 삭제 및 변경을 제어할 수 없습니다.
+
+
+> 💡 `<img>` 와 `<video>` 같은 요소는 [replaced element](https://developer.mozilla.org/ko/docs/Web/CSS/Replaced_element)라고도 합니다. 그 이유는 요소의 내용과 크기가 요소 그 자체가 아닌 외부의 요소에 의해 결정되기 때문입니다.
+
+
+### 대체 텍스트
+
+
+`alt` 속성은 이미지에 대한 텍스트 설명입니다. 이미지를 볼 수 없거나 렌더링이 느린 상황에 사용합니다.
+
+
+![Untitled.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/eaab8fff-c465-49fc-aea5-da4b3820c841/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231007%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231007T062006Z&X-Amz-Expires=3600&X-Amz-Signature=0621ff254f4616ec9b8778235fda1dabf9eabb791ccb862479d5ab3a0d42ab18&X-Amz-SignedHeaders=host&x-id=GetObject)
+
+
+또는 아래의 경우 유용합니다.
+
+- 시각적인 장애가 있는 유저를 위한 스크린 리더가 내용을 읽어줍니다.
+- 파일명을 잘못 적거나 경로명이 잘못된 경우
+- 텍스트만 지원되는 브라우저(Lynx)의 유저인 경우
+- 텍스트를 검색엔진에 제공하여 검색어와 일치시킬 수 있습니다.
+- 유저가 이미지를 꺼놓은 경우(휴대폰 대역폭이 제한적이거나 비용이 비싼 국가에서 흔한 일)
+
+`<alt>`에는 무엇을 써야 하는지는 이미지가 “왜” 존재하는지에 따라 다릅니다. 
+
+- **꾸미는 요소** : 이 경우는 CSS background-image를 사용하는 게 좋습니다. 이미지가 콘텐츠의 일부가 아니므로 HTML을 사용해야 한다면 빈 `alt`를 추가합시다.
+- **내용** : 이미지가 중요한 정보를 제공한다면 간단한 `alt`나 빈 `alt`를 사용합니다. 메인 텍스트로 충분히 설명해야 합니다.
+- **링크** : `<a>` 태그 안에 넣는 경우 `<a>` 내부 또는 `alt` 속성으로 링크 텍스트를 제공해야 합니다.
+- **텍스트** : 이미지 내부에 텍스트를 제공하지 말고, 어쩔 수 없다면 `alt` 속성에 제공해야 합니다.
+
+핵심은 이미지를 볼 수 없는 상황에서 콘텐츠를 놓치지 않게 하는 겁니다. 
+
+
+> 💡 [대체 텍스트 가이드](https://developer.mozilla.org/ko/docs/Learn/Accessibility/HTML#%EB%8C%80%EC%B2%B4_%ED%85%8D%EC%8A%A4%ED%8A%B8)
+
+
+### 너비와 높이
+
+
+단위 없이 정수로 제공되며 픽셀 단위입니다. 
+
+
+페이지의 HTML과 이미지는 별도의 HTTP(S) 요청으로 브라우저에 의해 별개의 리소스입니다. 대체로 HTML이 표시될 때 이미지가 아직 받아지지 않았다면 이미지가 불러와지면 페이지가 업데이트됩니다. 브라우저는 이미지 아래의 텍스트를 옮기고 이미지를 넣습니다. 이것은 텍스트를 이미 읽기 시작한 사용자에게 매우 불편할 겁니다. 
+
+
+이미지의 너비와 높이를 전달하면 미리 공간을 잡아줍니다.
+
+
+![Untitled.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/59fc7188-f2c2-4c5f-b3ec-953707e865c3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231007%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231007T062006Z&X-Amz-Expires=3600&X-Amz-Signature=0f6b56166ed444e67ff0eabd1731821ae9342ef5cbeb1f8a72344ea1521cddd5&X-Amz-SignedHeaders=host&x-id=GetObject)
+
+
+참고 : [이미지에 높이와 너비를 설정하는 것은 정말 중요합니다.](https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/)
+
+
+> NOTE: 이미지의 크기를 크게 설정하면 흐릿하거나 너무 작아보이거나 왜곡되거나 대역폭을 낭비하게 됩니다. 만약 이미지를 조정해야 한다면 CSS를 사용합니다.
+
+
+### 이미지 제목
+
+
+`title` 속성을 추가하면 이미지 위에 마우스를 올렸을 때 툴팁을 제공합니다. 그러나 [추천하지 않습니다.](https://www.24a11y.com/2017/the-trials-and-tribulations-of-the-title-attribute/)
+
+
+## 미디어 애셋 및 라이선스
+
+
+이미지를 사용하기 전에 소유하고 있는지, 사용 권한이 있는지, 소유자의 라이선스 조건을 만족하는지 먼저 확인합시다.
+
+
+### 라이선스 타입 이해하기
+
+
+**All rights reserved**
+
+
+copyrighted image를 사용하고 싶다면 다음 중 하나를 해야 합니다.
+
+- 명시적인 허가를 저작권 보유자에게 얻기
+- 라이선스 비용 지불
+- 관할 지역 내 공정 사용 또는 공정 거래로 간주되면 사용하기
+
+<u>저작권 표시나 라이선스 조건을 포함시키는 것은 필수적이지 않고 창작되면 자동으로 발생합니다.</u>
+
+
+**Permissive**
+
+
+[MIT](https://mit-license.org/), [BSD](https://opensource.org/license/BSD-3-clause/), 또는 적절한 [크리에이티브 커먼즈(CC) 라이선스](https://creativecommons.org/choose/)와 같은 허용 라이센스에 따라 이미지를 공개하는 경우, 라이선스 비용을 지불하거나 사용을 위한 허가를 요청할 필요가 없지만 조건을 충족해야 합니다.
+
+- 원본 링크를 제공하고, 크레딧 제공
+- 변경사항 표시
+- 2차 작업물을 동일한 라이선스로 공유 - Copyleft 라이선스
+- 공유하지 않음
+- 상업적으로 사용하지 않음
+- 라이선스의 사본을 릴리즈에 포함
+
+**Public domain/CC0**
+
+
+저작권 만료 또는 특정 권리 포기 등
+
+
+**Public domain**에 작업물을 놓을 때 [CC0](https://creativecommons.org/share-your-work/public-domain/cc0/)이 가장 효과적입니다. 명확한 법적 도구를 제공합니다. **Public domain**을 사용할 때는 라이선스 상태가 표시된 원본 소스의 스크린샷을 찍어두는 걸 고려하세요.
+
+
+### **permissively-licensed images** 검색하기
+
+- Google 검색 → "이미지" 탭을 클릭 → "도구" 클릭 → 툴바에 "사용 권한" 드롭다운 → 크리에이티브 커먼즈 라이선스 하에 있는 이미지 검색
+- 이미지 레포지토리 사이트 (예: [Flickr](https://flickr.com/), [ShutterStock](https://www.shutterstock.com/), [Pixabay](https://pixabay.com/))는 허가된 라이선스 이미지만 검색할 수 있도록 검색 옵션을 제공합니다. [Picryl](https://picryl.com/)과 [The Noun Project](https://thenounproject.com/)와 같은 사이트는 허가된 라이선스 이미지와 아이콘만 배포합니다.
+
+## figures 및 figure captions로 이미지에 주석 달기
+
+
+스크린 리더에 문제를 일으키지 않고 이미지와 캡션을 연결합시다.
+
+
+```javascript
+<figure>
+  <img
+    src="images/dinosaur.jpg"
+    alt="The head and torso of a dinosaur skeleton;
+            it has a large head with long sharp teeth"
+    width="400"
+    height="341" />
+
+  <figcaption>
+    A T-Rex on display in the Manchester University Museum.
+  </figcaption>
+</figure>
+```
+
+
+`<figure>`는 이미지, 코드 스니펫, 오디오, 비디오, 방정식, 표 등이 될 수 있습니다.
+
+
+## CSS background images
+
+
+임베디드 이미지는 HTML 이미지보다 위치 지정 및 제어가 쉽습니다.
+
