@@ -1,19 +1,18 @@
 import dotenv from "dotenv";
 dotenv.config();
 import fs from "fs";
-import path from "path";
+import path, { dirname } from "path";
 import { NotionToMarkdown } from "notion-to-md";
 import { Client } from "@notionhq/client";
 import { fileURLToPath } from "url";
-import { dirname } from "path";
 
-export const notion = new Client({
+const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
-export async function fetchPages() {
+async function fetchPages() {
   return notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID,
     filter: {
@@ -25,19 +24,19 @@ export async function fetchPages() {
   });
 }
 
-export async function fetchIndexPages() {
+async function fetchPagesWithStatus(status) {
   return notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID,
     filter: {
       property: "Status",
       status: {
-        equals: "Index",
+        equals: status,
       },
     },
   });
 }
 
-export async function fetchPageBlocks(pageId) {
+async function fetchPageBlocks(pageId) {
   const response = await notion.blocks.children.list({ block_id: pageId });
   return response.results;
 }
@@ -48,14 +47,14 @@ function getSlugParts(slug) {
 
 async function getFolderPath(page, __dirname, slug) {
   const slugParts = getSlugParts(slug);
-  const subpathOfTab = slugParts.slice(0, -1);
-  let folderPath;
 
-  if (page.properties["Tab"]) {
-    const tabName = page.properties["Tab"]?.["select"]?.["name"];
+  let folderPath;
+  const tabName = page.properties["Tab"]?.["select"]?.["name"] ?? null;
+  if (tabName) {
+    const subpathOfTab = slugParts.slice(0, -1);
     folderPath = path.join(__dirname, "../pages", tabName, ...subpathOfTab);
   } else {
-    folderPath = path.join(__dirname, "../pages", ...subpathOfTab);
+    folderPath = path.join(__dirname, "../pages");
   }
   await fs.promises.mkdir(folderPath, { recursive: true });
 
@@ -64,12 +63,24 @@ async function getFolderPath(page, __dirname, slug) {
 
 async function writeMetaJsonFile(folderPath, originFileName, plainText) {
   try {
-    const parsedData = JSON.parse(plainText);
+    const filePath = path.join(`${folderPath}/${originFileName}`, "_meta.json");
+
+    // 파일이 존재하는 경우 먼저 삭제
+    if (fs.existsSync(filePath)) {
+      await fs.promises.unlink(filePath);
+    }
+
+    let parsedData;
+    try {
+      parsedData = JSON.parse(plainText);
+    } catch (e) {
+      console.error(`Failed to parse JSON: ${e.message}`);
+      console.error(`Invalid JSON: ${plainText}`);
+      return; // or throw e; depending on how you want to handle the error
+    }
+
     const formattedJson = JSON.stringify(parsedData, null, 2);
-    await fs.promises.writeFile(
-      path.join(`${folderPath}/${originFileName}`, "_meta.json"),
-      formattedJson
-    );
+    await fs.promises.writeFile(filePath, formattedJson);
   } catch (error) {
     console.error(`Failed to write _meta.json file:`, error);
   }
@@ -94,45 +105,49 @@ async function writeMarkdownFile(
   }
 }
 
-async function updateContent() {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
+async function processPages(status, __dirname) {
+  const pages = await fetchPagesWithStatus(status);
+  const pageResults = Object.entries(pages.results);
 
-  // Convert Indexes
-  const indexPages = await fetchIndexPages();
-  const indexPageResults = Object.entries(indexPages.results);
-
-  const indexPagePromises = indexPageResults.map(async ([idx, indexPage]) => {
-    const blocks = await fetchPageBlocks(indexPage.id);
-    if (!blocks[0]?.code?.rich_text) {
-      console.error(`Invalid data structure for indexPage ${idx}`);
-      return;
-    }
-
-    console.time(`indexPagePromises-${idx}`);
+  const pagePromises = pageResults.map(async ([idx, page]) => {
+    console.time(`${status}PagePromises-${idx}`);
 
     try {
+      const blocks = await fetchPageBlocks(page.id);
+      if (!blocks[0]?.code?.rich_text) {
+        console.error(`Invalid data structure for ${status}Page ${idx}`);
+        return;
+      }
+
       const plainText = blocks[0].code.rich_text[0].plain_text;
-      const slug = indexPage.properties["Slug"]?.url;
+      const slug = page.properties["Slug"]?.url;
       if (!slug) {
         throw new Error(
-          `indexPage ${indexPage.id} does not have a Slug property`
+          `${status}Page ${page.id} does not have a Slug property`
         );
       }
 
       const [folderPath, originFileName] = await getFolderPath(
-        indexPage,
+        page,
         __dirname,
         slug
       );
       await writeMetaJsonFile(folderPath, originFileName, plainText);
-      console.timeEnd(`indexPagePromises-${idx}`);
+      console.timeEnd(`${status}PagePromises-${idx}`);
     } catch (error) {
-      console.error(`Failed to process indexPage ${idx}:`, error);
+      console.error(`Failed to process ${status}Page ${idx}:`, error);
     }
   });
 
-  await Promise.all(indexPagePromises);
+  await Promise.all(pagePromises);
+}
+
+async function updateContent() {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+
+  await processPages("Index", __dirname);
+  await processPages("Tab", __dirname);
 
   // Convert Pages
   const pages = await fetchPages();

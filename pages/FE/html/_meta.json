@@ -13,5 +13,14 @@
   },
   "hyperlink": {
     "title": "하이퍼링크 만들기"
+  },
+  "advanced-text-formatting": {
+    "title": "고급 텍스트 서식 지정"
+  },
+  "document-and-website-structure": {
+    "title": "문서 및 웹사이트 구조"
+  },
+  "debugging-html": {
+    "title": "HTML 디버깅"
   }
 }

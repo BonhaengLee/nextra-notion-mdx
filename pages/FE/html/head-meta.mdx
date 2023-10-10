@@ -37,9 +37,6 @@ head의 내용이 하는 일은 페이지에 대한 [metadata](https://developer
 `<title>` 요소는 브라우저에서 사이트를 북마크할 때, `<title>`의 내용물을 추천하는 북마크 이름으로 사용하기도 한다.
 
 
-> ℹ️ 북마크할 때 들어가는 값이 `<title>`이라는 것을 정확하게 알고 있지는 않았는데 새롭게 알게 됨.
-
-
 ![bookmark-example.png](https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML/bookmark-example.png)
 
 
@@ -66,22 +63,16 @@ HTML에서 문서에 공식적으로 메타데이터를 적용하는 방법이 `
 만약 (라틴 알파벳 사용을 위해서) `ISO-8859-1`로 characterset을 설정한다면, 페이지가 엉망으로 렌더링된다.
 
 
-![Safari 예시 - 똑똑하다.](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/e88b1a32-ff7f-4527-b19c-9d9409cd52f1/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231007%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231007T062006Z&X-Amz-Expires=3600&X-Amz-Signature=a032f0cd0161b85db8625bada74bc41edb5588fffffea8dd70aee9d512dfccfb&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Safari 예시 - 똑똑하다.](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/e88b1a32-ff7f-4527-b19c-9d9409cd52f1/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231010%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231010T085227Z&X-Amz-Expires=3600&X-Amz-Signature=ba3c884a8e06332e5febd601db0d9e53b9b7a6d1e670533b42c685e01a655d69&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
-![Chrome 예시 - 똑똑하다.](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/aef66421-b979-4299-a80f-d601827a2a88/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231007%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231007T062006Z&X-Amz-Expires=3600&X-Amz-Signature=dd7c3f18ea54f7f9c7eb4059800a33f899a46b1d29aadd8afd225212f209116d&X-Amz-SignedHeaders=host&x-id=GetObject)
+![Chrome 예시 - 똑똑하다.](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/aef66421-b979-4299-a80f-d601827a2a88/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231010%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231010T085227Z&X-Amz-Expires=3600&X-Amz-Signature=5a1a4529ed97520f1aa7b897f1bc493e14dca6cc69af65195035ad43ad1ad231&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
-> **참고:** 크롬과 같은 어떤 브라우저는 자동으로 잘못된 인코딩을 고치기 때문에, 어떤 브라우저를 사용하는가에 따라 이 문제를 겪지 않을 수도 있습니다. 그래도 다른 브라우저에서 있을 잠재적인 문제를 피하기 위하여 인코딩을 `utf-8` 으로 설정해야 합니다.
+> 🦋 크롬과 같은 어떤 브라우저는 자동으로 잘못된 인코딩을 고치기 때문에, 어떤 브라우저를 사용하는가에 따라 이 문제를 겪지 않을 수도 있습니다. 그래도 다른 브라우저에서 있을 잠재적인 문제를 피하기 위하여 인코딩을 `utf-8` 으로 설정해야 합니다.
 
 
-> ℹ️ 크롬과 같은 브라우저가 아니라 다른 브라우저를 사용하는 경우에 이런 잘못된 character 렌더링을 겪어본 기억이 있다. 
-
-
-### 능동적 학습: character 인코딩 실험
-
-
-...
+> 💭 크롬과 같은 브라우저가 아니라 다른 브라우저를 사용하는 경우에 이런 잘못된 character 렌더링을 겪어본 기억이 있다. 
 
 
 ### 저자와 설명을 추가
@@ -91,23 +82,33 @@ HTML에서 문서에 공식적으로 메타데이터를 적용하는 방법이 `
 
 이를 이용해서 일부 컨텐츠 관리 시스템에는 페이지 작성자 정보를 자동으로 추출해서 사용할 수 있는 기능이 있다.
 
+<details>
+<summary>**작성자 정보를 추출해서 사용하는 기능이 어떤 기능을 말하는 것인가?**</summary>
 
-> ℹ️ 작성자 정보를 추출해서 사용하는 기능이 어떤 기능을 말하는 것인가.
+일부 CMS에서 작성자 정보의 자동 추출 및 사용 기능은 SEO를 지원하며, 콘텐츠 생성자에 대한 관련 정보를 제공함으로써 사용자 경험을 향상시킨다. 예를 들어 다음과 같은 메타 태그가 HTML의 head 태그에 생성된다.
+
+
+```javascript
+<meta name="author" content="홍길동">
+```
+
+
+</details>
 
 
 또한, <u>페이지 컨텐츠 관련 키워드를 포함시켜서 검색엔진에 이 페이지가 더 많이 표시될 가능성이 생기게 한다.</u> (이를 Search Engine Optimization, SEO라고 한다.)
 
 
-> **참고:** Google에서는 메인 MDN 홈페이지 링크 아래에 MDN의 몇 가지 관련 **서브 페이지가 표시**된다. 이를 **사이트 링크**라고하며 <u>**Google의 웹 마스터 도구에서 구성할 수 있다.**</u> 그리고 이는 Google 검색 엔진에서 사이트의 검색 결과를 개선하는 방법이다.
+> 🦋 Google에서는 메인 MDN 홈페이지 링크 아래에 MDN의 몇 가지 관련 **서브 페이지가 표시**된다. 이를 **사이트 링크**라고하며 <u>**Google의 웹 마스터 도구에서 구성할 수 있다.**</u> 그리고 이는 Google 검색 엔진에서 사이트의 검색 결과를 개선하는 방법이다.
 
 
-> ℹ️ 페이지 내 서브 페이지를 표시하고 싶다면 참고해서 작업을 수행한다.
+> 💭 페이지 내 서브 페이지를 검색 결과에 표시하고 싶다면 위의 내용을 참고한다.
 
 
-> **참고:** 많은 `<meta>` 기능들이 더이상 사용되지 않는다. (예를들어 `<meta name="keywords" content="fill, in, your, keywords, here">` 같은, 다른 검색 용어에 대해 해당 페이지의 관련성을 부여하기 위해 검색 엔진에 제공하던 키워드 등..) 스팸 발송자들이 키워드 목록에 수백 개의 키워드를 채워버리는 악용 사례가 생겨 버렸기 때문에 이것들은 검색 엔진들이 아예 무시를 해버리게 되었다.
+> 🦋 많은 `<meta>` 기능들이 더이상 사용되지 않는다. (예를들어 `<meta name="keywords" content="fill, in, your, keywords, here">` 같은, 다른 검색 용어에 대해 해당 페이지의 관련성을 부여하기 위해 검색 엔진에 제공하던 키워드 등..) 스팸 발송자들이 키워드 목록에 수백 개의 키워드를 채워버리는 악용 사례가 생겨 버렸기 때문에 이것들은 검색 엔진들이 아예 무시를 해버리게 되었다.
 
 
-> ℹ️ 현재 프로젝트에서 작성한 meta 태그 중에 검색엔진에서 무시해버리는데도 사용하고 있는 것들이 있는가?
+> 💭 현재 프로젝트에서 작성한 meta 태그 중에 검색엔진에서 무시해버리는데도 사용하고 있는 것들이 있는가?
 
 
 ### Other types of metadata

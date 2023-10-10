@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "update-content": "node ./scripts/updateContent.mjs",
-    "build": "rm -rf .next && npm run update-content && next build",
+    "build": "rm -rf .next && next build",
     "start": "next start"
   },
   "repository": {

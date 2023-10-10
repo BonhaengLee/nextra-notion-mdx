@@ -1,9 +1,12 @@
-# `<object>` 로부터 `<iframe>`까지 — 기타 임베딩 기술
+# object
+
 
 [Attributions and copyright licensing](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Attrib_copyright_license) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/Community/Roles_teams#contributor) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
 
+
 | **목표** | `<object>` 요소, `<embed>` 요소, `<iframe>` (en-US) 요소를 사용하여 웹 페이지에 PDF 문서나 다른 웹 페이지를 삽입하는 방법을 배워봅니다. |
-| -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| ------ | ------------------------------------------------------------------------------------------------- |
+
 
 ## 임베딩의 짧은 역사
 
@@ -13,16 +16,18 @@
 
 ## iframe 자세히 보기
 
-<u>
-  직접 조작할 수 없거나 자체적인 버전을 구현하고 싶지 않은 외부 콘텐츠를
-  여러분의 웹사이트에 포함할 때 아주 유용합니다.
-</u>
+
+<u>직접 조작할 수 없거나 자체적인 버전을 구현하고 싶지 않은 외부 콘텐츠를 여러분의 웹사이트에 포함할 때 아주 유용합니다.</u> 
+
 
 예를 들면 온라인 비디오 제공자의 영상이나 [Disqus](https://disqus.com/)와 같은 댓글 시스템, 온라인 지도 제공자의 지도, 광고 배너 등이 있습니다. .
 
+
 `<iframe>`를 사용하기 전에 알고 계셔야 할 [보안 문제](https://developer.mozilla.org/ko/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies#security_concerns)가 몇 가지 존재합니다. 웹 페이지에 MDN 용어사전을 넣으려고 한다면 용어사전 페이지 대신 에러 메시지가 표시되는 걸 보고 놀랄 수 있습니다.
 
+
 `Refused to display 'https://developer.mozilla.org/' in a frame because it set 'X-Frame-Options' to 'deny'.`
+
 
 이는 아래 보안 파트에서 다룹니다.
 
@@ -33,24 +38,33 @@
 - 대체 콘텐츠 : [`<video>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/video) 요소와 같이 유사한 다른 요소들과 마찬가지로, `<iframe></iframe>` 여닫는 태그 사이에 대체 콘텐츠를 추가하여 브라우저가 `<iframe>`을 지원하지 않는 경우 대체 콘텐츠를 표시할 수 있습니다. 위 예시에서는 해당 페이지로 이동하는 링크를 추가하였습니다. 요즘 `<iframe>`을 지원하지 않는 브라우저를 마주칠 일은 거의 없겠지만요.
 - [`sandbox`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)[ (en-US)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe)IE 10 이상에서 지원되는`<iframe>`의 다른 기능보다 이 특성은 상대적으로 최신 브라우저에서 작동하며 높은 보안 설정을 요구합니다. 이에 대해서는 다음 내용에서 다룰 예정입니다.
 
-> 💡 속도를 향상하기 위해 <u>메인 콘텐츠가 완전히 로딩된 이후에 JavaScript로 iframe의 src 특성을 설정하는 편이 좋습니다.</u>
+> 🦋 속도를 향상하기 위해 <u>메인 콘텐츠가 완전히 로딩된 이후에 JavaScript로 iframe의 src 특성을 설정하는 편이 좋습니다.</u>   
 > 웹 페이지를 더 빠르게 이용할 수 있고 [SEO](https://developer.mozilla.org/ko/docs/Glossary/SEO) 측정 시 중요한 지표인 웹 페이지 로딩 시간을 단축할 수 있습니다.
+
 
 ### 보안 문제
 
+
 브라우저 제작사와 웹 개발자들이 얻은 값비싼 교훈이 있는데, iframe이 웹상에서 악의를 품은 사람들의 일반적인 공격 목표(공식 용어로는 **공격 벡터**)가 된다는 점입니다. **해커**, 더 정확히는 **크래커**라 불리는 이 나쁜 사람들은 <u>iframe을 악용하여 여러분의 웹페이지를 수정하거나, 사람들을 속여 사용자 명이나 비밀번호 등 민감한 정보를 유출하려 합니다.</u> 이 때문에 명세 엔지니어와 브라우저 개발자는 `<iframe>`을 더 안전하게 만들기 위해 다양한 보안 장치를 개발했고, 고려할만한 모범 사례도 있습니다. 아래에서 다뤄보겠습니다.
 
-> 💡 **참고:** [클릭재킹 (en-US)](https://developer.mozilla.org/en-US/docs/Glossary/Clickjacking)은 눈에 보이지 않는 iframe을 여러분의 웹 문서에 삽입하거나, 해커들의 악성 웹사이트에 여러분의 웹페이지를 삽입하여 사용자들을 잘못된 행동으로 유도하거나 민감한 데이터를 훔쳐내는 일반적인 기술입니다.
+
+> 🦋 [클릭재킹 (en-US)](https://developer.mozilla.org/en-US/docs/Glossary/Clickjacking)은 눈에 보이지 않는 iframe을 여러분의 웹 문서에 삽입하거나, 해커들의 악성 웹사이트에 여러분의 웹페이지를 삽입하여 사용자들을 잘못된 행동으로 유도하거나 민감한 데이터를 훔쳐내는 일반적인 기술입니다.
+
 
 아까 봤던 메시지입니다.
 
+
 `Refused to display 'https://developer.mozilla.org/' in a frame because it set 'X-Frame-Options' to 'deny'.`
 
-다른 사이트에서 MDN 웹페이지를 `<iframe>`안에 포함하지 못하도록 MDN 개발자들이 설정했습니다.
 
-여러분의 웹사이트에 전체 MDN 페이지를 삽입해두고 자기 사이트라고 우기거나 [클릭재킹 (en-US)](https://developer.mozilla.org/en-US/docs/Glossary/Clickjacking)으로 데이터를 훔치려 들 수 있기 때문입니다.
+다른 사이트에서 MDN 웹페이지를 `<iframe>`안에 포함하지 못하도록 MDN 개발자들이 설정했습니다. 
+
+
+여러분의 웹사이트에 전체 MDN 페이지를 삽입해두고 자기 사이트라고 우기거나 [클릭재킹 (en-US)](https://developer.mozilla.org/en-US/docs/Glossary/Clickjacking)으로 데이터를 훔치려 들 수 있기 때문입니다. 
+
 
 모두가 MDN 페이지를 삽입한다면 대역폭이 추가로 들어 Mozilla에서 큰 비용을 지불해야 할 겁니다.
+
 
 **필요한 경우에만 삽입하세요**
 
@@ -63,24 +77,32 @@
 - HTTPS는 콘텐츠가 전송 도중에 변조될 위험을 줄여줍니다.
 - HTTPS는 삽입된 콘텐츠와 이를 포함하고 있는 문서가 서로에게 접근하는 것을 방지합니다.
 
-> ✂️ 여러 호스팅 업체에서는 직접 인증서를 설치하지 않아도 HTTPS를 적용할 수 있는 호스팅을 제공합니다. 하지만 직접 HTTPS를 적용해야 한다면, [Let's Encrypt](https://letsencrypt.org/)에서 Apache 웹 서버나 Nginx 등 널리 사용되는 웹 서버를 지원할 뿐만 아니라 자동으로 필요한 인증서를 생성하고 설치할 수 있는 도구와 설명서를 제공하고 있습니다.
+> 🦋 여러 호스팅 업체에서는 직접 인증서를 설치하지 않아도 HTTPS를 적용할 수 있는 호스팅을 제공합니다. 하지만 직접 HTTPS를 적용해야 한다면, [Let's Encrypt](https://letsencrypt.org/)에서 Apache 웹 서버나 Nginx 등 널리 사용되는 웹 서버를 지원할 뿐만 아니라 자동으로 필요한 인증서를 생성하고 설치할 수 있는 도구와 설명서를 제공하고 있습니다.
+
 
 **항상** **`sandbox`** **특성을 사용하세요**
 
+
 웹사이트를 악용하려는 사람들이 공격할 여지를 최소화하기 위해 삽입된 콘텐츠에 대해서는 필요한 작업만 허용해야 합니다.
+
 
 **CSP 지시어를 설정하세요**
 
-[CSP](https://developer.mozilla.org/ko/docs/Glossary/CSP)는 [**콘텐츠 보안 정책**](https://developer.mozilla.org/ko/docs/Web/HTTP/CSP) 을 나타내며 HTML 문서 보안을 개선하기 위해 고안된 일련의 HTTP 헤더를 제공합니다.  `<iframe>` 보안과 연관 지어 말씀드리자면, [적절한 ](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Frame-Options)[`X-Frame-Options`](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Frame-Options)[ 헤더를 전송하도록 설정할 수 있습니다](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Frame-Options).
 
-## <embed>와 <object>
+[CSP](https://developer.mozilla.org/ko/docs/Glossary/CSP)는 [**콘텐츠 보안 정책**](https://developer.mozilla.org/ko/docs/Web/HTTP/CSP) 을 나타내며 HTML 문서 보안을 개선하기 위해 고안된 일련의 HTTP 헤더를 제공합니다.  `<iframe>` 보안과 연관 지어 말씀드리자면, [적절한 ](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Frame-Options)[`X-Frame-Options`](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Frame-Options)[ 헤더를 전송하도록 설정할 수 있습니다](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-Frame-Options). 
 
-| `<embed>`                                                                                     | `<object>`                                                                            |
-| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| 삽입된 콘텐츠의 [URL](https://developer.mozilla.org/ko/docs/Glossary/URL)                     | `src`                                                                                 |
-| 삽입된 콘텐츠의 정확한 [media type](https://developer.mozilla.org/ko/docs/Glossary/MIME_type) | `type`                                                                                |
-| 플러그인이 제어하는 박스의 높이와 너비(CSS 픽셀단위)                                          | `height`[`width`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/embed#width) |
-| 플러그인으로 넘길 매개변수의 이름과 값                                                        | 동일한 이름과 값을 가진 특성                                                          |
-| 이용 불가 리소스에 대한 대체 HTML 콘텐츠                                                      | 지원하지 않음 (`<noembed>`는 더 이상 사용되지 않음)                                   |
+
+## `<embed>`와 `<object>`
+
+
+| `<embed>`                                                                           | `<object>`                                                                             |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| 삽입된 콘텐츠의 [URL](https://developer.mozilla.org/ko/docs/Glossary/URL)                  | `src`                                                                                  |
+| 삽입된 콘텐츠의 정확한 [media type](https://developer.mozilla.org/ko/docs/Glossary/MIME_type) | `type`                                                                                 |
+| 플러그인이 제어하는 박스의 높이와 너비(CSS 픽셀단위)                                                     | `height/`[`width`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/embed#width) |
+| 플러그인으로 넘길 매개변수의 이름과 값                                                               | 동일한 이름과 값을 가진 특성                                                                       |
+| 이용 불가 리소스에 대한 대체 HTML 콘텐츠                                                           | 지원하지 않음 (`<noembed>`는 더 이상 사용되지 않음)                                                    |
+
 
 PDF는 많은 [접근성 문제](https://webaim.org/techniques/acrobat/acrobat)가 있어 링크를 통해 별도의 페이지에서 볼 수 있도록 하는 게 좋습니다.
+

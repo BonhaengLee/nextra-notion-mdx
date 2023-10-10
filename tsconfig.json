@@ -20,7 +20,8 @@
     "**/*.ts",
     "**/*.tsx",
     "lib/notion.ts",
-    "scripts/updateContent.mjs"
+    "scripts/updateContent.mjs",
+    "scripts/getDirname.mjs"
   ],
   "exclude": ["node_modules", "pages/_app.tsx"]
 }

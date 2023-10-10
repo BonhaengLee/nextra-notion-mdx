@@ -34,13 +34,13 @@ tags는 웹 상의 다른 페이지로 이동하게 하는 하이퍼 링크 내�
 ```
 
 
-> ❗ HTML 요소는 대소문자를 구분하지 않는다. 하지만 가독성 문제로 소문자로 작성한다.
+> 🦋 HTML 요소는 대소문자를 구분하지 않는다. 하지만 가독성 문제로 소문자로 작성한다.
 
 
 ## HTML 요소(Element)의 구조
 
 
-![https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-small.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/463d002e-35be-4675-91a9-8c7c56d904ae/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231007%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231007T062006Z&X-Amz-Expires=3600&X-Amz-Signature=aeedd9045fc8e8cedb80f1d5652cc9bd69e596d83baae626a713863e11a36568&X-Amz-SignedHeaders=host&x-id=GetObject)
+![https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started/grumpy-cat-small.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/4751c7dd-b990-48b0-938c-6c24a799bd8f/463d002e-35be-4675-91a9-8c7c56d904ae/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20231010%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20231010T085227Z&X-Amz-Expires=3600&X-Amz-Signature=393e864d5b6f0f6eb65973085fec41a662664e65184b1ac44a756e8e1a03e0ab&X-Amz-SignedHeaders=host&x-id=GetObject)
 
 
 ```javascript
@@ -85,7 +85,7 @@ tags는 웹 상의 다른 페이지로 이동하게 하는 하이퍼 링크 내�
 
 ## 블럭 레벨 요소 vs 인라인 요소(Block versus inline elements)
 
-- **블록 레벨 요소(Block-level elements)** 는 웹페이지 상에 블록(Block)을 만드는 요소이다. 
+- 블록 레벨 요소(Block-level elements)는 웹페이지 상에 블록(Block)을 만드는 요소이다. 
 블록 레벨 요소는 앞뒤 요소 사이에 새로운 줄(Line)을 만들고 나타납니다. 즉 블록 레벨 요소 이전과 이후 요소사이의 줄을 바꾼다. 
 블록 레벨 요소는 일반적으로 페이지의 구조적 요소를 나타낼 때 사용됩니다. 예를 들어 개발자는 블록 레벨 요소를 사용하여 단락(Paragraphs), 목록(lists), 네비게이션 메뉴(Navigation Menus), 꼬리말(Footers) 등을 표현할 수 있다. 
 블록 레벨 요소는 인라인 요소(Inline elements)에 중첩될(Nested inside)수 없다. 그러나 블록 레벨 요소는 다른 블록 레벨 요소에 중첩될 수 있다.
@@ -93,7 +93,7 @@ tags는 웹 상의 다른 페이지로 이동하게 하는 하이퍼 링크 내�
 인라인 요소는 문서의 한 단락같은 큰 범위에는 적용될 수 없고 문장, 단어 같은 작은 부분에 대해서만 적용될 수 있다. 
 인라인 요소는 새로운 줄(Line)을 만들지 않는다. 즉 인라인 요소를 작성하면 그것을 작성한 단락내에 나타나게 된다. 예를 들어, 인라인 요소에는 하이퍼링크를 정의하는 요소인 [`<a>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/a) , 텍스트(Text)를 강조하는 요소인 [`<em>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/em),[`<strong>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong)[ (en-US)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong) 등이 있다.
 
-[예시]
+**[예시]**
 
 
 ```javascript
@@ -117,13 +117,13 @@ sixth
 ```
 
 
-> ❗ **참고:** HTML5에서 요소 분류를 재정의했다: [Element content categories](https://www.whatwg.org/specs/web-apps/current-work/complete/section-index.html#element-content-categories). 이러한 정의는 이전의 정의보다 더 정확하고 덜 모호하지만, "블록"과 "인라인"보다 이해하기 훨씬 더 복잡하기 때문에, 이 주제 내내 이 정의들을 고수한다.
+> 🦋 HTML5에서 요소 분류를 재정의했다: [Element content categories](https://www.whatwg.org/specs/web-apps/current-work/complete/section-index.html#element-content-categories). 이러한 정의는 이전의 정의보다 더 정확하고 덜 모호하지만, "블록"과 "인라인"보다 이해하기 훨씬 더 복잡하기 때문에, 이 주제 내내 이 정의들을 고수한다.
 
 
-> ❗ **참고:** 이 주제에서 사용되는 "블럭(block)"과 "인라인(inline)"의 뜻은 [the types of CSS boxes (en-US)](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model#types_of_css_boxes)에서 사용하고 있는 같은 단어와 혼돈하면 안된다. 기본적으로는 상관관계가 있지만 CSS 표시 유형을 변경해도 요소의 범주는 변경되지 않으며 요소가 포함할 수 있는 요소와 요소가 포함될 수 있는 요소에는 영향을 주지 않는다. HTML5가 이러한 용어들을 삭제했던 이유 중 하나는 이러한 다소 흔한 혼란을 막기 위해서였다.
+> 🦋 이 주제에서 사용되는 "블럭(block)"과 "인라인(inline)"의 뜻은 [the types of CSS boxes (en-US)](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model#types_of_css_boxes)에서 사용하고 있는 같은 단어와 혼돈하면 안된다. 기본적으로는 상관관계가 있지만 CSS 표시 유형을 변경해도 요소의 범주는 변경되지 않으며 요소가 포함할 수 있는 요소와 요소가 포함될 수 있는 요소에는 영향을 주지 않는다. HTML5가 이러한 용어들을 삭제했던 이유 중 하나는 이러한 다소 흔한 혼란을 막기 위해서였다.
 
 
-> ❗ **참고:** [Block-level elements](https://developer.mozilla.org/ko/docs/Glossary/Block-level_content) 문서와 [Inline elements](https://developer.mozilla.org/ko/docs/Glossary/Inline-level_content) 문서를 참고하면 블럭과 인라인 요소에 대한 유용한 내용을 찾을 수 있다.
+> 🦋 [Block-level elements](https://developer.mozilla.org/ko/docs/Glossary/Block-level_content) 문서와 [Inline elements](https://developer.mozilla.org/ko/docs/Glossary/Inline-level_content) 문서를 참고하면 블럭과 인라인 요소에 대한 유용한 내용을 찾을 수 있다.
 
 
 ## 빈 요소(Empty elements)
@@ -135,7 +135,7 @@ sixth
 “단일 태그”를 사용하는 `<img>` 같은 요소는 Empty elements다.
 
 
-> ❗ **참고:** 빈 요소는 가끔 Void 요소로 불리기도 한다.
+> 🦋 빈 요소는 가끔 Void 요소로 불리기도 한다.
 
 
 ## 속성(Attributes)
@@ -282,7 +282,7 @@ HTML 구문에 쓰이는 `<`,`>`, `"`및 `&` 는 텍스트에 어떻게 포함
 첫번째 단락의 경우 `<p>`의 두 번째 인스턴스를 새 단락이 시작하는 것으로 해석한다.
 
 
-> ❗ **참고:** HTML의 [문자 인코딩이 UTF-8로 설정](https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML#specifying_your_document%27s_character_encoding)되어 있기 때문에 최신 브라우저는 실제 기호를 잘 처리하므로 다른 기호에 대해서는 엔티티 참조를 사용할 필요가 없다.
+> 🦋 **참고:** HTML의 [문자 인코딩이 UTF-8로 설정](https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML#specifying_your_document%27s_character_encoding)되어 있기 때문에 최신 브라우저는 실제 기호를 잘 처리하므로 다른 기호에 대해서는 엔티티 참조를 사용할 필요가 없다.
 
 
 ## HTML 주석

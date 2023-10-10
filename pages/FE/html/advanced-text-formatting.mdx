@@ -1,12 +1,17 @@
 # 고급 텍스트 서식 지정
 
+
 [Attributions and copyright licensing](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Attrib_copyright_license) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/MDN/Community/Roles_teams#contributor) is licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
 
 ## 설명 목록
 
-설명 목록은 다른 타입의 리스트와 다르게 [`<dl>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/dl) 태그를 사용합니다. 또한 각 용어는 [`<dt>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/dt) (설명 용어) 요소를 사용하고, 각 설명은 [`<dd>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/dd) (설명 정의) 요소를 사용합니다.
+
+Description lists(설명 목록)은 다른 타입의 리스트와 다르게 `<dl>` 태그를 사용합니다. 또한 각 용어는 `<dt>` (description term) 요소를 사용하고, 각 설명은 `<dd>` (description definition) 요소를 사용합니다.
+
 
 ### 하나의 용어에 대한 다중 설명
+
 
 ```javascript
 <dl>
@@ -22,21 +27,23 @@
 </dl>
 ```
 
+
 ## 인용구
+
 
 ### 블록 인용구
 
-블록 레벨 컨텐츠의 섹션(문단, 여러 단락, 리스트 등)이 인용된 경우, 이를 나타내는 [`<blockquote>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/blockquote) 요소로 감싸야합니다. 그리고 [`cite`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/blockquote#cite) 속성에 출처를 표기합니다. 아래의 예시는 MDN `<blockquote>` 요소 페이지를 인용한 것 입니다.
+
+블록 레벨 컨텐츠의 섹션(문단, 여러 단락, 리스트 등)이 인용된 경우, 이를 나타내는 `<blockquote>` 요소로 감싸야합니다. 그리고 `cite` 속성에 출처를 표기합니다. 아래의 예시는 MDN `<blockquote>` 요소 페이지를 인용한 것 입니다.
+
 
 ```javascript
 <p>
-  <strong>
-    HTML <code>&lt;blockquote&gt;</code> 요소
-  </strong>{" "}
-  (또는
+  <strong>HTML <code>&lt;blockquote&gt;</code> 요소</strong> (또는
   <em>HTML 인용 블록 요소</em>)는 안쪽의 텍스트가 긴 인용문임을 나타냅니다.
 </p>
 ```
+
 
 ```javascript
 <p>다음은 블록 인용구입니다.</p>
@@ -49,15 +56,21 @@
 </blockquote>
 ```
 
+
 ### 인라인 인용구
+
 
 `<q>`를 사용합니다.
 
+
 ### 인용
+
 
 페이지에서 인용 출처를 화면에 나타나게 하고 싶다면 링크나 다른 적절한 방법을 통해 텍스트에서 볼 수 있게 만들어야 합니다.
 
-[`<cite>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/cite) 요소가 있지만 이는 인용되는 자료의 제목(예: 책 이름)을 포함하기 위한 것입니다. 그러나 `<cite>` 안에 있는 텍스트를 어떤 식으로든 인용 출처에 연결하지 못할 이유는 없습니다.
+
+`<cite>` 요소가 있지만 이는 인용되는 자료의 제목(예: 책 이름)을 포함하기 위한 것입니다. 그러나 `<cite>` 안에 있는 텍스트를 어떤 식으로든 인용 출처에 연결하지 못할 이유는 없습니다.
+
 
 ```javascript
 <p>
@@ -82,13 +95,18 @@
 </p>
 ```
 
+
 ## 약어
+
 
 약어나 약어를 포함할 때는 처음 사용할 때 약어를 표시하는 `<abbr>`과 함께 해당 용어의 전체 내용을 일반 텍스트로 제공하세요.
 
+
 사용자 에이전트에게 콘텐츠를 공지/표시하는 방법에 대한 힌트를 제공하는 동시에 모든 사용자에게 약어가 무엇을 의미하는지 알릴 수 있습니다.
 
-약어 외에 확장어를 제공하는 것이 의미가 없고 약어 또는 약어가 상당히 단축된 용어인 경우에는 해당 용어의 전체 확장어를 [`title`](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes#title) 속성의 값으로 제공합니다.
+
+약어 외에 확장어를 제공하는 것이 의미가 없고 약어 또는 약어가 상당히 단축된 용어인 경우에는 해당 용어의 전체 확장어를 `title` 속성의 값으로 제공합니다.
+
 
 ```javascript
 <p>
@@ -102,25 +120,32 @@
 </p>
 ```
 
+
 ## 연락처 세부 사항 표시
 
-[`<address>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/address) 요소를 이용해서 연락처 세부 정보를 표시할 수 있습니다.
+
+`<address>` 요소를 이용해서 연락처 세부 정보를 표시할 수 있습니다. 
+
 
 ## 위 첨자와 아래 첨자
 
-[`<sup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup)[ (en-US)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup) 과 [`<sub>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/sub) 요소
+
+`<sup>`과 `<sub>` 요소
+
 
 ## 컴퓨터 코드
 
-- [`<code>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/code): 일반적인 컴퓨터 코드를 표시합니다.
-- [`<pre>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/pre): 공백(일반적으로 코드 블록)을 유지하기 위해 사용합니다. 택스트 내에서 들여 쓰기 또는 초과 공백을 사용하면 브라우저가 이를 무시하고 렌더링 된 페이지에 공백을 표시하지 않습니다. 그러나 `<pre></pre>` 태그로 텍스트를 감싸면 공백이 텍스트 편집기에서 보는 것과 동일하게 렌더링 됩니다.
-- [`<var>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/var): 변수 이름을 명확하게 표시합니다.
-- [`<kbd>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/kbd): 컴퓨터에 입력 된 키보드 (및 기타 유형) 입력을 표시합니다.
-- [`<samp>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/samp): 컴퓨터 프로그램의 출력을 표시합니다.
+- `<code>`: 일반적인 컴퓨터 코드를 표시합니다.
+- `<pre>`: 공백(일반적으로 코드 블록)을 유지하기 위해 사용합니다. 택스트 내에서 들여 쓰기 또는 초과 공백을 사용하면 브라우저가 이를 무시하고 렌더링 된 페이지에 공백을 표시하지 않습니다. 그러나 `<pre></pre>` 태그로 텍스트를 감싸면 공백이 텍스트 편집기에서 보는 것과 동일하게 렌더링 됩니다.
+- `<var>`: 변수 이름을 명확하게 표시합니다.
+- `<kbd>`: 컴퓨터에 입력 된 키보드 (및 기타 유형) 입력을 표시합니다.
+- `<samp>`: 컴퓨터 프로그램의 출력을 표시합니다.
 
 ## 시간과 날짜 표시
 
-계가 읽을 수 있는 형식(machine-readable)으로 시간과 날짜를 표시하기 위한 [`<time>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/time) 요소를 제공합니다.
+
+계가 읽을 수 있는 형식(machine-readable)으로 시간과 날짜를 표시하기 위한 `<time>` 요소를 제공합니다. 
+
 
 ```javascript
 <!-- Standard simple date -->
@@ -142,3 +167,4 @@
 <!-- Calling out a specific week number -->
 <time datetime="2016-W04">The fourth week of 2016</time>
 ```
+
